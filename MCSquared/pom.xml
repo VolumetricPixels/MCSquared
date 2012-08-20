@@ -1,7 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.volumetricpixels.mcsquared</groupId>
-  <artifactId>MCSquared</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- Project Information -->
   <name>MCSquared</name>
+  <groupId>com.volumetricpixels</groupId>
+  <artifactId>mcsquared</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <url>http://www.volumetricpixels.com</url>
+  <inceptionYear>2012</inceptionYear>
+  <description></description>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<mainClass>${project.groupId}.${project.artifactId}.MCSquared</mainClass>
+  	<buildNumber>0</buildNumber>
+  </properties>
+  
+  <!-- Organisation -->
+  <organization>
+  	<name>VolumetricPixels</name>
+  	<url>http://www.volumetricpixels.com</url>
+  </organization>
+  
+  <licenses>
+  	<license>
+  		<name>VolumetricPixels License Version 1</name>
+  	</license>
+  </licenses>
+  
+  <repositories>
+  	<repository>
+  		
+  	</repository>
+  </repositories>
 </project>
