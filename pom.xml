@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <!-- Project Information -->
+  <name>MCSquared</name>
+  <groupId>com.volumetricpixels</groupId>
+  <artifactId>mcsquared</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <url>http://www.volumetricpixels.com</url>
+  <inceptionYear>2012</inceptionYear>
+  <description>Energy and matter.</description>
+  
+  <!-- Properties -->
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<mainClass>${project.groupId}.${project.artifactId}.MCSquared</mainClass>
+  	<buildNumber>0</buildNumber>
+  	<releaseVersion>0</releaseVersion>
+  </properties>
+  
+  <!-- Organization -->
+  <organization>
+  	<name>VolumetricPixels</name>
+  	<url>http://www.volumetricpixels.com/</url>
+  </organization>
+  
+  <!-- License -->
+  <licenses>
+  	<license>
+  		<name>VolumetricPixels License Version 1</name>
+  	</license>
+  </licenses>
+  
+  <!--  Repository Locations -->
+  <repositories>
+  	<repository>
+  		<id>spout-repo</id>
+		<url>http://repo.spout.org/</url>
+  	</repository>
+  </repositories>
+  <pluginRepositories>
+		<pluginRepository>
+			<id>spout-plugins</id>
+			<url>http://repo.spout.org/</url>
+		</pluginRepository>
+	</pluginRepositories>
+  
+  <!-- Dependencies -->
+  <dependencies>
+  	<dependency>
+  		<groupId>org.spout</groupId>
+  		<artifactId>spoutapi</artifactId>
+  		<version>dev-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
+  
+</project>
