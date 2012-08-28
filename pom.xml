@@ -53,6 +53,12 @@
   		<version>dev-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>org.spout</groupId>
+  		<artifactId>vanilla</artifactId>
+  		<version>dev-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
   </dependencies>
   
 </project>
