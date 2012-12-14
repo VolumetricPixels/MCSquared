@@ -1,4 +1,4 @@
-package me.thehutch.mcsquared.exceptions;
+package com.volumetricpixels.mcsquared.exceptions;
 
 /**
  * @author thehutch

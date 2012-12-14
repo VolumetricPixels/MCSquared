@@ -1,4 +1,4 @@
-package me.thehutch.mcsquared.api.energy;
+package com.volumetricpixels.mcsquared.api.energy;
 
 /**
  * @author thehutch

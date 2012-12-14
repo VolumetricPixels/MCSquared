@@ -1,6 +1,6 @@
-package me.thehutch.mcsquared;
+package com.volumetricpixels.mcsquared;
 
-import me.thehutch.mcsquared.modules.ModuleManager;
+import com.volumetricpixels.mcsquared.modules.ModuleManager;
 import org.spout.api.plugin.CommonPlugin;
 
 /**

@@ -1,4 +1,4 @@
-package me.thehutch.mcsquared.modules;
+package com.volumetricpixels.mcsquared.modules;
 
 import java.util.List;
 
