@@ -14,13 +14,13 @@ public interface EnergyTransferer {
      */
     public void transferTo(EnergyHolder destination, double energy);
     
+    
     /**
-     * Transfers the amount of energy from the source 
-     * to the current EnergyHolder
+     * Called when energy is received from a source
      * 
      * @param source
      * @param energy 
      */
-    public void transferFrom(EnergySource source, double energy);
+    public void onEnergyReceive(double energy);
 
 }
