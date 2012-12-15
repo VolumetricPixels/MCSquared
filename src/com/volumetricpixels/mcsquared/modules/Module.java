@@ -7,13 +7,8 @@ import java.io.File;
  */
 public abstract class Module {
     
-    private final String name;
-    private final String version;
-    
-    public Module(String name, String version) {
-        this.name = name;
-        this.version = version;
-    }
+    protected String name;
+    protected String version;
     
     public String getName() {
         return name;

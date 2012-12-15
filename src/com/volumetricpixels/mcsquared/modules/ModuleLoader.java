@@ -55,6 +55,8 @@ public class ModuleLoader {
                     throw new InvalidMainClassException("Invalid main class loading attempt from module: " + name);
                 }
                 Module module = (Module) module_class.newInstance();
+                module.name = name;
+                module.version = version;
                 module.onLoad();
                 modules.add(module);
                 System.out.println("[MCSquared] Module: " + name + " Version: " + version + " has been loaded");
