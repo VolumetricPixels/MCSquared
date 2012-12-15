@@ -33,7 +33,7 @@ public class ModuleLoader {
                 jarFile = new JarFile(file);
                 yaml_file = jarFile.getJarEntry("module.yml");
                 if (yaml_file == null) {
-                    continue;
+                    throw new InvalidModuleYAMLException("Could not find module.yml in module: " + file.getName());
                 }
                 yaml_data = new YamlConfiguration(jarFile.getInputStream(yaml_file));
                 main = yaml_data.getNode("main").getString();
