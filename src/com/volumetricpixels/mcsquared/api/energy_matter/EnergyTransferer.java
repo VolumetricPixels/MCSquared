@@ -3,24 +3,15 @@ package com.volumetricpixels.mcsquared.api.energy_matter;
 /**
  * @author thehutch
  */
-public interface EnergyTransferer {
+public interface EnergyTransferer extends Connectable {
     
     /**
-     * Transfers the amount of energy from the current 
+     * Transfers the amount of energy from the current
      * EnergyHolder into the destination.
      *
      * @param destination
-     * @param energy 
+     * @param energy
      */
-    public void transferTo(EnergyHolder destination, double energy);
+    public void transferTo(EnergyReceiver destination, double energy);
     
-    
-    /**
-     * Called when energy is received from a source
-     * 
-     * @param source
-     * @param energy 
-     */
-    public void onEnergyReceive(double energy);
-
 }
