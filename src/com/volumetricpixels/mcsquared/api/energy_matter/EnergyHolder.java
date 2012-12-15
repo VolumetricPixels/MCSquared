@@ -3,7 +3,7 @@ package com.volumetricpixels.mcsquared.api.energy_matter;
 /**
  * @author thehutch
  */
-public abstract class EnergyHolder implements EnergyTransferer {
+public abstract class EnergyHolder implements EnergyReceiver {
 
     private double maximum_energy;
     private double energy_stored;
@@ -25,20 +25,23 @@ public abstract class EnergyHolder implements EnergyTransferer {
     }
     
     public void addEnergy(double energy) {
-        if (energy_stored + energy <= maximum_energy && energy > 0) {
+        if (energy_stored + energy > maximum_energy) {
+            energy_stored = maximum_energy;
+        } else if (energy < 0) {
+            throw new IllegalArgumentException("Cannot add negative energy!");
+        } else {
             energy_stored += energy;
         }
     }
     
     public void removeEnergy(double energy) {
-        if (energy_stored - energy >= 0 && energy > 0) {
+        if (energy_stored - energy < 0) {
+            energy_stored = 0;
+        } else if (energy < 0) {
+            throw new IllegalArgumentException("Cannot remove negative energy!");
+        } else {
             energy_stored -= energy;
         }
-    }
-    
-    @Override
-    public void transferTo(EnergyHolder destination, double energy) {
-        destination.onEnergyReceive(energy);
     }
     
     @Override
@@ -48,5 +51,15 @@ public abstract class EnergyHolder implements EnergyTransferer {
         } else {
             addEnergy(energy);
         }
+    }
+
+    @Override
+    public void onConnect() {
+        
+    }
+
+    @Override
+    public void onDisconnect() {
+        
     }
 }
