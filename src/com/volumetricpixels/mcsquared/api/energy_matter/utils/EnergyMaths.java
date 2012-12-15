@@ -7,25 +7,18 @@ import com.volumetricpixels.mcsquared.api.energy_matter.EnergyPrefix;
  */
 public class EnergyMaths {
     
+    private static final float ENERGY_CONSTANT = 2.5f;
+    private static final float CONVERT_RATE = 0.95f;
+
     private EnergyMaths(){
     }
     
-    public static final double SPEED_OF_LIGHT = 299792458L;
-    public static final double SPEED_OF_LIGHT_SQUARED = SPEED_OF_LIGHT * SPEED_OF_LIGHT;
-    
-    public static final double MASS_OF_ELECTRON = (9.11 * (Math.pow(10, -31)));
-    public static final double CHARGE_OF_ELECTRON = (1.6 * (Math.pow(10, -19)));
-    
     public static double calculateEnergy(double mass) {
-        return mass * SPEED_OF_LIGHT_SQUARED;
+       return (mass / ENERGY_CONSTANT) * CONVERT_RATE;
     }
     
-    public static double calculateEnergyStored(double voltage, double capacitance) {
-        return 0.5 * capacitance * (voltage * voltage);
-    }
-    
-    public static double calculateVoltage(double resistance, double current) {
-        return resistance * current;
+    public static double calculateMass(double energy) {
+        return (energy * ENERGY_CONSTANT) * CONVERT_RATE;
     }
     
     public static long convertPrefixToNormal(EnergyPrefix prefix, long energy) {
