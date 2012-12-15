@@ -15,12 +15,12 @@ public abstract class Alchemable {
     
     public Alchemable(EnergyPrefix prefix, double energy) {
         this.energy = energy;
-        this.mass = energy / EnergyMaths.SPEED_OF_LIGHT_SQUARED;
+        this.mass = EnergyMaths.calculateMass(energy);
     }
     
     public Alchemable(MatterPrefix prefix, double mass) {
         this.mass = mass;
-        this.energy = mass * EnergyMaths.SPEED_OF_LIGHT_SQUARED;
+        this.energy = EnergyMaths.calculateEnergy(mass);
     }
     
     public double getEnergy() {
