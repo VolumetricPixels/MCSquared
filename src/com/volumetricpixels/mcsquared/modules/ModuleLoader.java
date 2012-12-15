@@ -1,12 +1,12 @@
 package com.volumetricpixels.mcsquared.modules;
 
+import com.volumetricpixels.mcsquared.exceptions.InvalidMainClassException;
+import com.volumetricpixels.mcsquared.exceptions.InvalidModuleYAMLException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import com.volumetricpixels.mcsquared.exceptions.InvalidMainClassException;
-import com.volumetricpixels.mcsquared.exceptions.InvalidModuleYAMLException;
 import org.spout.api.util.config.yaml.YamlConfiguration;
 
 /**
