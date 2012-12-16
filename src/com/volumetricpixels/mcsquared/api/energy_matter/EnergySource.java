@@ -6,7 +6,7 @@ package com.volumetricpixels.mcsquared.api.energy_matter;
 public interface EnergySource extends EnergyTransferer {
     
     /**
-     * Called when the generate generates energy
+     * Called when the source generates energy
      */
     public void onEnergyGenerate(double energy_generated);
 

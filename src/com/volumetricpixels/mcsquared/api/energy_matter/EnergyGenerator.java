@@ -19,7 +19,6 @@ public abstract class EnergyGenerator extends ViewedBlockComponent implements Co
 
     @Override
     public void onEnergyGenerate(double energy_generated) {
-        //TODO: send energy to connected receivers
         double energy_distribution = energy_generated / connected_receivers.size();
         for(BlockFace face : connected_receivers.keySet()) {
             transferTo(connected_receivers.get(face), energy_distribution);
