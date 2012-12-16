@@ -1,9 +1,12 @@
 package com.volumetricpixels.mcsquared.api.energy_matter;
 
+import org.spout.vanilla.component.substance.material.ViewedBlockComponent;
+import org.spout.vanilla.inventory.Container;
+
 /**
  * @author thehutch
  */
-public abstract class EnergyGenerator implements EnergySource {
+public abstract class EnergyGenerator extends ViewedBlockComponent implements Container, EnergySource {
 
     private double energy_generation;
 
