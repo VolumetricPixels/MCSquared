@@ -8,7 +8,7 @@ import org.spout.api.plugin.CommonPlugin;
  */
 public class MCSquared extends CommonPlugin {
 
-    private ModuleManager module_manager;
+    private static ModuleManager module_manager;
     
     @Override
     public void onEnable() {
@@ -17,10 +17,10 @@ public class MCSquared extends CommonPlugin {
 
     @Override
     public void onDisable() {
-        
+        module_manager.unloadModules();
     }
     
-    public final ModuleManager getModuleManager() {
+    public static ModuleManager getModuleManager() {
         return module_manager;
     }
 }
