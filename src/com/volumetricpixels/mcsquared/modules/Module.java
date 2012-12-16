@@ -1,5 +1,6 @@
 package com.volumetricpixels.mcsquared.modules;
 
+import com.volumetricpixels.mcsquared.MCSquared;
 import java.io.File;
 
 /**
@@ -19,11 +20,15 @@ public abstract class Module {
     }
     
     public File getDataDirectory() {
-        File directory = new File("");
+        File directory = new File("MCSquared" + File.separator + "modules" +  File.separator + name);
         if (!directory.exists() || !directory.isDirectory()) {
             directory.mkdirs();
         }
         return directory;
+    }
+    
+    public ModuleManager getModuleManager() {
+        return MCSquared.getModuleManager();
     }
     
     public abstract void onLoad();
