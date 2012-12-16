@@ -36,8 +36,12 @@ public class ModuleManager {
     
     public void unloadModules() {
         for(Module module : modules) {
-            unloadModule(module);
-            System.out.println("[MCSquared] Module: " + module.getName() + " has been unloaded");
+            boolean successful = unloadModule(module);
+            if (successful) {
+                System.out.println("[MCSquared] Module: " + module.getName() + " has been unloaded");
+            } else {
+                System.out.println("[MCSquared] Module: " + module.getName() + " failed to unload!");
+            }
         }
     }
 }
