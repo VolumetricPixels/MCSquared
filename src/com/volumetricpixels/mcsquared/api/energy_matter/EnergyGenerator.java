@@ -20,6 +20,10 @@ public abstract class EnergyGenerator extends ViewedBlockComponent implements Co
     @Override
     public void onEnergyGenerate(double energy_generated) {
         //TODO: send energy to connected receivers
+        double energy_distribution = energy_generated / connected_receivers.size();
+        for(BlockFace face : connected_receivers.keySet()) {
+            transferTo(connected_receivers.get(face), energy_distribution);
+        }
     }
 
     @Override
@@ -29,12 +33,12 @@ public abstract class EnergyGenerator extends ViewedBlockComponent implements Co
 
 
     @Override
-    public void onConnect() {
-        
+    public void onConnect(BlockFace face, EnergyReceiver connector) {
+        connected_receivers.put(face, connector);
     }
     
     @Override
-    public void onDisconnect() {
-        
+    public void onDisconnect(BlockFace face) {
+        connected_receivers.remove(face.getOpposite());
     }
 }

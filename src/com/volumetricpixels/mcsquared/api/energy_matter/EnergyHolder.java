@@ -1,5 +1,7 @@
 package com.volumetricpixels.mcsquared.api.energy_matter;
 
+import org.spout.api.material.block.BlockFace;
+
 /**
  * @author thehutch
  */
@@ -54,12 +56,12 @@ public abstract class EnergyHolder implements EnergyReceiver {
     }
 
     @Override
-    public void onConnect() {
+    public void onConnect(BlockFace face, EnergyReceiver connector) {
         
     }
 
     @Override
-    public void onDisconnect() {
+    public void onDisconnect(BlockFace face) {
         
     }
 }
