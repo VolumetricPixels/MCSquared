@@ -8,6 +8,6 @@ public interface EnergySource extends EnergyTransferer {
     /**
      * Called when the generate generates energy
      */
-    public void onEnergyGenerate();
+    public void onEnergyGenerate(double energy_generated);
 
 }
