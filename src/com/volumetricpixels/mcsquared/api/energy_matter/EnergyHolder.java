@@ -6,49 +6,48 @@ import org.spout.api.material.block.BlockFace;
  * @author thehutch
  */
 public abstract class EnergyHolder implements EnergyReceiver {
+    private double maxEnergy;
+    private double energyHeld;
 
-    private double maximum_energy;
-    private double energy_stored;
-
-    public EnergyHolder(double maximum_energy) {
-        this.maximum_energy = maximum_energy;
+    public EnergyHolder(double maxEnergy) {
+        this.maxEnergy = maxEnergy;
     }
 
-    public double getMaximum_energy() {
-        return maximum_energy;
+    public double getMaxEnergy() {
+        return maxEnergy;
     }
 
-    public void setMaximum_energy(double maximum_energy) {
-        this.maximum_energy=maximum_energy;
+    public void setMaxEnergy(double maxEnergy) {
+        this.maxEnergy = maxEnergy;
     }
-    
+
     public double getEnergyStored() {
-        return energy_stored;
+        return energyHeld;
     }
-    
+
     public void addEnergy(double energy) {
-        if (energy_stored + energy > maximum_energy) {
-            energy_stored = maximum_energy;
+        if (energyHeld + energy > maxEnergy) {
+            energyHeld = maxEnergy;
         } else if (energy < 0) {
             throw new IllegalArgumentException("Cannot add negative energy!");
         } else {
-            energy_stored += energy;
+            energyHeld += energy;
         }
     }
-    
+
     public void removeEnergy(double energy) {
-        if (energy_stored - energy < 0) {
-            energy_stored = 0;
+        if (energyHeld - energy < 0) {
+            energyHeld = 0;
         } else if (energy < 0) {
             throw new IllegalArgumentException("Cannot remove negative energy!");
         } else {
-            energy_stored -= energy;
+            energyHeld -= energy;
         }
     }
-    
+
     @Override
     public void onEnergyReceive(double energy) {
-        if (energy + getEnergyStored() > this.getMaximum_energy()) {
+        if (energy + getEnergyStored() > getMaxEnergy()) {
             //Do stuff for EnergyHolder is full
         } else {
             addEnergy(energy);
@@ -57,11 +56,11 @@ public abstract class EnergyHolder implements EnergyReceiver {
 
     @Override
     public void onConnect(BlockFace face, EnergyReceiver connector) {
-        
+
     }
 
     @Override
     public void onDisconnect(BlockFace face) {
-        
+
     }
 }

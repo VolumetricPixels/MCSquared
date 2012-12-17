@@ -4,7 +4,6 @@ package com.volumetricpixels.mcsquared.api.energy_matter;
  * @author thehutch
  */
 public enum EnergyPrefix implements Prefix {
-    
     NORMAL(""),
     KILO("Kilo"),
     MEGA("Mega"),
@@ -16,11 +15,11 @@ public enum EnergyPrefix implements Prefix {
     YOTTA("Yotta");
 
     private final String prefix;
-    
+
     private EnergyPrefix(String prefix) {
         this.prefix = prefix;
     }
-    
+
     @Override
     public String getPrefix() {
         return prefix;
