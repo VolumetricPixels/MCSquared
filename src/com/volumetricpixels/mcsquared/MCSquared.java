@@ -1,8 +1,7 @@
 package com.volumetricpixels.mcsquared;
 
-import org.spout.api.plugin.CommonPlugin;
-
 import com.volumetricpixels.mcsquared.modules.ModuleManager;
+import org.spout.api.plugin.CommonPlugin;
 
 /**
  * @author thehutch
