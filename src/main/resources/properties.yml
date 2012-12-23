@@ -1,0 +1,9 @@
+name: TestModule
+version: 0.0.1
+description: hi
+
+author: VP
+website: volumetricpixels.com
+
+main: com.volumetricpixels.testmodule.TestModule
+platform: BOTH
