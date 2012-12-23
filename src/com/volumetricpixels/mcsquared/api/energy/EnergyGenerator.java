@@ -1,4 +1,4 @@
-package com.volumetricpixels.mcsquared.api.energy_matter;
+package com.volumetricpixels.mcsquared.api.energy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.spout.vanilla.inventory.Container;
 /**
  * @author thehutch
  */
-public abstract class EnergyGenerator extends ViewedBlockComponent implements Container, EnergySource {
+public abstract class EnergyGenerator extends ViewedBlockComponent implements Container, EnergyTransferer {
 
     private final Map<BlockFace, EnergyReceiver> receivers;
 
@@ -17,13 +17,7 @@ public abstract class EnergyGenerator extends ViewedBlockComponent implements Co
         receivers = new HashMap<BlockFace, EnergyReceiver>();
     }
 
-    @Override
-    public void onEnergyGenerate(double energy_generated) {
-        double energy_distribution = energy_generated / receivers.size();
-        for (BlockFace face : receivers.keySet()) {
-            transferTo(receivers.get(face), energy_distribution);
-        }
-    }
+    public abstract void onEnergyGenerate(double energy_generated);
 
     @Override
     public void transferTo(EnergyReceiver destination, double energy) {

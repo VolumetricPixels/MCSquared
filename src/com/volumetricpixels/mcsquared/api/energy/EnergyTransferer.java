@@ -1,4 +1,4 @@
-package com.volumetricpixels.mcsquared.api.energy_matter;
+package com.volumetricpixels.mcsquared.api.energy;
 
 /**
  * @author thehutch
