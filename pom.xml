@@ -48,20 +48,14 @@
   <!-- Dependencies -->
   <dependencies>
   	<dependency>
-  		<groupId>org.spout</groupId>
-  		<artifactId>spoutapi</artifactId>
-  		<version>dev-SNAPSHOT</version>
+  	<groupId>org.spout</groupId>
+  	<artifactId>spoutapi</artifactId>
+  	<version>dev-SNAPSHOT</version>
   	</dependency>
   	<dependency>
     	<groupId>org.spout</groupId>
     	<artifactId>vanilla</artifactId>
     	<version>1.4.5-SNAPSHOT</version>
-	</dependency>
-	<dependency>
-		<groupId>com.volumetricpixels</groupId>
-    	<artifactId>mcsquared</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<scope>compile</scope>
 	</dependency>
   </dependencies>
   
