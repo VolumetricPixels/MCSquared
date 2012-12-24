@@ -1,20 +1,18 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import org.spout.api.material.block.BlockFace;
-import org.spout.vanilla.component.substance.material.ViewedBlockComponent;
-import org.spout.vanilla.inventory.Container;
 
 /**
  * @author thehutch
  */
-public abstract class EnergyGenerator extends ViewedBlockComponent implements Container, EnergyTransferer {
+public abstract class EnergyGenerator implements EnergyTransferer {
 
     private final Map<BlockFace, EnergyReceiver> receivers;
 
     public EnergyGenerator() {
-        receivers = new HashMap<BlockFace, EnergyReceiver>();
+        receivers = new EnumMap<BlockFace, EnergyReceiver>(BlockFace.class);
     }
 
     public abstract void onEnergyGenerate(double energy_generated);
