@@ -2,10 +2,6 @@ package com.volumetricpixels.mcsquared.api.energy;
 
 import org.spout.api.geo.discrete.Point;
 
-/**
- * @author thehutch
- * @author kitskub
- */
 public interface Connectable {
     /**
      * Called when a connectable is placed

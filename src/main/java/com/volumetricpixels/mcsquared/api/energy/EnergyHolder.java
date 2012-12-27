@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.spout.api.component.type.BlockComponent;
 
-/**
- * @author thehutch
- * @author kitskub
- */
 public abstract class EnergyHolder extends BlockComponent implements EnergyTransferer {
     private double maxEnergy;
     private double energyHeld;

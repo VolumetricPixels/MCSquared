@@ -1,8 +1,5 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-/**
- * @author thehutch
- */
 public abstract class Transformable {
     private double energy;
     private double mass;

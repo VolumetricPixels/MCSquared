@@ -1,9 +1,5 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-/**
- *
- * @author kitskub
- */
 public interface EnergySource {
 	/**
      * Adds the receiver

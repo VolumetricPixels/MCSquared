@@ -1,8 +1,5 @@
 package com.volumetricpixels.mcsquared.api.utils;
 
-/**
- * @author thehutch
- */
 public class EnergyMaths {
     public static final String UNIT = "Joules";
     public static final float ENERGY_CONSTANT = 2.5f;
