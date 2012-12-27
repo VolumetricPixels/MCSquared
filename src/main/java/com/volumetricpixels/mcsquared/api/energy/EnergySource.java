@@ -6,12 +6,9 @@ package com.volumetricpixels.mcsquared.api.energy;
  */
 public interface EnergySource {
 	/**
-     * Transfers the amount of energy from the current
-     * EnergyHolder into the destination.
+     * Adds the receiver
      *
      * @param destination
-     * @param energy
-     * @return energy that couldn't be transmitted 
      */
-    public double onTransmit(EnergyReceiver destination, double energy);
+    public void addReceiver(EnergyReceiver destination);
 }

@@ -1,16 +1,17 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-import org.spout.api.component.type.BlockComponent;
-import org.spout.api.material.block.BlockFace;
+import java.util.ArrayList;
+import java.util.List;
+import org.spout.api.component.Component;
 
 /**
  * @author thehutch
  * @author kitskub
  */
-public abstract class EnergyHolder extends BlockComponent implements EnergyTransferer {
-    
+public abstract class EnergyHolder extends Component implements EnergyTransferer {
     private double maxEnergy;
     private double energyHeld;
+    protected List<EnergyReceiver> receivers = new ArrayList<EnergyReceiver>();
 
     public EnergyHolder(double maxEnergy) {
         this.maxEnergy = maxEnergy;
@@ -67,17 +68,8 @@ public abstract class EnergyHolder extends BlockComponent implements EnergyTrans
     public double onReceive(EnergySource source, double energy) {
         return addEnergy(energy);
     }
-
-    public double onTransmit(EnergyReceiver destination, double energy) {
-        return removeEnergy(energy);
-    }
-
     
-    public void onConnect(BlockFace face, EnergyTransferer connector) {
-        
-    }
-
-    public void onDisconnect(BlockFace face) {
-        
+    public void addReceiver(EnergyReceiver receiver) {
+        receivers.add(receiver);
     }
 }
