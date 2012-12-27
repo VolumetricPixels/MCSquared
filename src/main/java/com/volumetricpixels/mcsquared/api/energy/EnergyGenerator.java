@@ -19,17 +19,14 @@ public abstract class EnergyGenerator extends ViewedBlockComponent implements Co
 
     public abstract void onEnergyGenerate(double energy_generated);
 
-    @Override
     public void transferTo(EnergyReceiver destination, double energy) {
         destination.onEnergyReceive(energy);
     }
 
-    @Override
     public void onConnect(BlockFace face, EnergyReceiver connector) {
         receivers.put(face, connector);
     }
 
-    @Override
     public void onDisconnect(BlockFace face) {
         receivers.remove(face.getOpposite());
     }

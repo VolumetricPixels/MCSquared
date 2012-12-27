@@ -45,7 +45,6 @@ public abstract class EnergyHolder implements EnergyReceiver {
         }
     }
 
-    @Override
     public void onEnergyReceive(double energy) {
         if (energy + getEnergyStored() > getMaxEnergy()) {
             //Do stuff for EnergyHolder is full
@@ -54,12 +53,10 @@ public abstract class EnergyHolder implements EnergyReceiver {
         }
     }
 
-    @Override
     public void onConnect(BlockFace face, EnergyReceiver connector) {
 
     }
 
-    @Override
     public void onDisconnect(BlockFace face) {
 
     }
