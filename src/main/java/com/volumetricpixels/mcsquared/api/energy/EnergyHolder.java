@@ -1,11 +1,12 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
+import org.spout.api.component.type.BlockComponent;
 import org.spout.api.material.block.BlockFace;
 
 /**
  * @author thehutch
  */
-public abstract class EnergyHolder implements EnergyReceiver {
+public abstract class EnergyHolder extends BlockComponent implements EnergyReceiver {
     
     private double maxEnergy;
     private double energyHeld;
