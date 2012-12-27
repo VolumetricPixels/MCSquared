@@ -6,7 +6,7 @@ import org.spout.api.material.block.BlockFace;
 /**
  * @author thehutch
  */
-public abstract class EnergyHolder extends BlockComponent implements EnergyReceiver {
+public abstract class EnergyHolder extends BlockComponent implements EnergyTransferer {
     
     private double maxEnergy;
     private double energyHeld;
@@ -55,7 +55,7 @@ public abstract class EnergyHolder extends BlockComponent implements EnergyRecei
         }
     }
 
-    public void onConnect(BlockFace face, EnergyReceiver connector) {
+    public void onConnect(BlockFace face, EnergyTransferer connector) {
         
     }
 

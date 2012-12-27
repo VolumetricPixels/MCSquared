@@ -8,21 +8,21 @@ import org.spout.api.material.block.BlockFace;
 /**
  * @author thehutch
  */
-public abstract class EnergyGenerator extends BlockComponent implements EnergyTransferer {
+public abstract class EnergySource extends BlockComponent implements EnergyTransferer {
 
-    private final Map<BlockFace, EnergyReceiver> receivers;
+    private final Map<BlockFace, EnergyTransferer> receivers;
 
-    public EnergyGenerator() {
-        receivers = new EnumMap<BlockFace, EnergyReceiver>(BlockFace.class);
+    public EnergySource() {
+        receivers = new EnumMap<BlockFace, EnergyTransferer>(BlockFace.class);
     }
 
     public abstract void onEnergyGenerate(double energy_generated);
 
-    public void transferTo(EnergyReceiver destination, double energy) {
-        destination.onEnergyReceive(energy);
+    public void transferTo(EnergyTransferer destination, double energy) {
+        destination.onReceive(energy);
     }
 
-    public void onConnect(BlockFace face, EnergyReceiver connector) {
+    public void onConnect(BlockFace face, EnergyTransferer connector) {
         receivers.put(face.getOpposite(), connector);
     }
 

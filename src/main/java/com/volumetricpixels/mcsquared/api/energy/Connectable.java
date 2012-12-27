@@ -13,7 +13,7 @@ public interface Connectable {
      * 
      * @param connected
      */
-    public void onConnect(BlockFace face, EnergyReceiver connector);
+    public void onConnect(BlockFace face, EnergyTransferer connector);
 
     /**
      * Called when this Connectable is destroyed

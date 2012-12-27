@@ -11,5 +11,12 @@ public interface EnergyTransferer extends Connectable {
      * @param destination
      * @param energy
      */
-    public void transferTo(EnergyReceiver destination, double energy);
+    public void onTransfer(EnergyTransferer destination, double energy);
+    
+    /**
+     * Called when energy is received from a source
+     * 
+     * @param energy 
+     */
+    public void onReceive(double energy);
 }
