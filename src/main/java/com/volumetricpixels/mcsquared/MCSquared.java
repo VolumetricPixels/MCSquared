@@ -5,11 +5,11 @@ import org.spout.api.plugin.CommonPlugin;
 public class MCSquared extends CommonPlugin {
 
 	public void onDisable() {
-		getLogger().info("disabled.");
+		getLogger().info("MCSquared Disabled.");
 	}
 
 	public void onEnable() {
-		getLogger().info("enabled.");
+		getLogger().info("MCSquared Enabled.");
 	}
 
 }
