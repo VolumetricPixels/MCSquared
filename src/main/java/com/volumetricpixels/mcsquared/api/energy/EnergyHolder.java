@@ -6,6 +6,7 @@ import org.spout.api.material.block.BlockFace;
  * @author thehutch
  */
 public abstract class EnergyHolder implements EnergyReceiver {
+    
     private double maxEnergy;
     private double energyHeld;
 
@@ -21,7 +22,7 @@ public abstract class EnergyHolder implements EnergyReceiver {
         this.maxEnergy = maxEnergy;
     }
 
-    public double getEnergyStored() {
+    public double getEnergyHeld() {
         return energyHeld;
     }
 
@@ -36,10 +37,10 @@ public abstract class EnergyHolder implements EnergyReceiver {
     }
 
     public void removeEnergy(double energy) {
-        if (energyHeld - energy < 0) {
-            energyHeld = 0;
-        } else if (energy < 0) {
+        if (energy < 0) {
             throw new IllegalArgumentException("Cannot remove negative energy!");
+        } else if (energyHeld - energy < 0) {
+            energyHeld = 0;
         } else {
             energyHeld -= energy;
         }
@@ -47,7 +48,7 @@ public abstract class EnergyHolder implements EnergyReceiver {
 
     @Override
     public void onEnergyReceive(double energy) {
-        if (energy + getEnergyStored() > getMaxEnergy()) {
+        if (energy + getEnergyHeld() > getMaxEnergy()) {
             //Do stuff for EnergyHolder is full
         } else {
             addEnergy(energy);
@@ -56,11 +57,11 @@ public abstract class EnergyHolder implements EnergyReceiver {
 
     @Override
     public void onConnect(BlockFace face, EnergyReceiver connector) {
-
+        
     }
 
     @Override
     public void onDisconnect(BlockFace face) {
-
+        
     }
 }
