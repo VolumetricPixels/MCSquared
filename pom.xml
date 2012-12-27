@@ -52,10 +52,5 @@
   	<artifactId>spoutapi</artifactId>
   	<version>dev-SNAPSHOT</version>
   	</dependency>
-  	<dependency>
-    	<groupId>org.spout</groupId>
-    	<artifactId>vanilla</artifactId>
-    	<version>1.4.6-SNAPSHOT</version>
-	</dependency>
   </dependencies>  
 </project>
