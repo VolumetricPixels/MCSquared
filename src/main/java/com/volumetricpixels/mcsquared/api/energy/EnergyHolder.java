@@ -5,6 +5,7 @@ import org.spout.api.material.block.BlockFace;
 
 /**
  * @author thehutch
+ * @author kitskub
  */
 public abstract class EnergyHolder extends BlockComponent implements EnergyTransferer {
     
@@ -27,34 +28,51 @@ public abstract class EnergyHolder extends BlockComponent implements EnergyTrans
         return energyHeld;
     }
 
-    public void addEnergy(double energy) {
-        if (energyHeld + energy > maxEnergy) {
-            energyHeld = maxEnergy;
-        } else if (energy < 0) {
+    /**
+     * 
+     * @param energy
+     * @return excess energy that couldn't be added
+     */
+    public double addEnergy(double energy) {
+        double excess = 0;
+        if (energy < 0) {
             throw new IllegalArgumentException("Cannot add negative energy!");
+        } else if (energyHeld + energy > maxEnergy) {
+            excess = energyHeld + energy - maxEnergy;
+            energyHeld = maxEnergy;
         } else {
             energyHeld += energy;
         }
+        return excess;
     }
 
-    public void removeEnergy(double energy) {
+    /**
+     * 
+     * @param energy
+     * @return amount of energy that couldn't be removed
+     */
+    public double removeEnergy(double energy) {
+        double excess = 0;
         if (energy < 0) {
             throw new IllegalArgumentException("Cannot remove negative energy!");
         } else if (energyHeld - energy < 0) {
+            excess = Math.abs(energyHeld - energy);
             energyHeld = 0;
         } else {
             energyHeld -= energy;
         }
+        return excess;
     }
 
-    public void onEnergyReceive(double energy) {
-        if (energy + getEnergyHeld() > getMaxEnergy()) {
-            //Do stuff for EnergyHolder is full
-        } else {
-            addEnergy(energy);
-        }
+    public double onReceive(EnergySource source, double energy) {
+        return addEnergy(energy);
     }
 
+    public double onTransmit(EnergyReceiver destination, double energy) {
+        return removeEnergy(energy);
+    }
+
+    
     public void onConnect(BlockFace face, EnergyTransferer connector) {
         
     }
