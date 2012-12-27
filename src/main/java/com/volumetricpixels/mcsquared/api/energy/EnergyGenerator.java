@@ -2,13 +2,13 @@ package com.volumetricpixels.mcsquared.api.energy;
 
 import java.util.EnumMap;
 import java.util.Map;
+import org.spout.api.component.type.BlockComponent;
 import org.spout.api.material.block.BlockFace;
-import org.spout.vanilla.component.substance.material.VanillaBlockComponent;
 
 /**
  * @author thehutch
  */
-public abstract class EnergyGenerator extends VanillaBlockComponent implements EnergyTransferer {
+public abstract class EnergyGenerator extends BlockComponent implements EnergyTransferer {
 
     private final Map<BlockFace, EnergyReceiver> receivers;
 
