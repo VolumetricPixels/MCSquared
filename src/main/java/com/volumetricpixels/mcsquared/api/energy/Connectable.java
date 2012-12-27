@@ -1,9 +1,10 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-import org.spout.api.material.block.BlockFace;
+import org.spout.api.geo.discrete.Point;
 
 /**
  * @author thehutch
+ * @author kitskub
  */
 public interface Connectable {
     /**
@@ -11,14 +12,14 @@ public interface Connectable {
      * and tries to connect to another
      * connectable.
      * 
-     * @param connected
+     * @param location 
      */
-    public void onConnect(BlockFace face, EnergyTransferer connector);
+    public void onConnect(Point location);
 
     /**
      * Called when this Connectable is destroyed
      * 
-     * @param disconnected
+     * @param location 
      */
-    public void onDisconnect(BlockFace face);
+    public void onDisconnect(Point location);
 }
