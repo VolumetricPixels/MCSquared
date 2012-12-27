@@ -4,7 +4,7 @@ description: Energy and matter API.
 
 author: Volumetric Pixels
 website: volumetricpixels.com
-depends: ['Vanilla']
+depends:
 
 main: com.volumetricpixels.mcsquared.MCSquared
 platform: BOTH
