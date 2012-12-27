@@ -3,11 +3,12 @@ package com.volumetricpixels.mcsquared.api.energy;
 import java.util.EnumMap;
 import java.util.Map;
 import org.spout.api.material.block.BlockFace;
+import org.spout.vanilla.component.substance.material.VanillaBlockComponent;
 
 /**
  * @author thehutch
  */
-public abstract class EnergyGenerator implements EnergyTransferer {
+public abstract class EnergyGenerator extends VanillaBlockComponent implements EnergyTransferer {
 
     private final Map<BlockFace, EnergyReceiver> receivers;
 
@@ -24,7 +25,7 @@ public abstract class EnergyGenerator implements EnergyTransferer {
 
     @Override
     public void onConnect(BlockFace face, EnergyReceiver connector) {
-        receivers.put(face, connector);
+        receivers.put(face.getOpposite(), connector);
     }
 
     @Override
