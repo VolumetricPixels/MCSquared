@@ -1,6 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy.source;
 
-public class EnergyGenerator extends EnergySource {
+public abstract class EnergyGenerator extends EnergySource {
     protected double energyGeneration;
 
     public double getEnergyGeneration() {

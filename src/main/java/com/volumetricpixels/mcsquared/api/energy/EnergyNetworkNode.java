@@ -1,8 +1,5 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-/**
- * @author User
- */
 public interface EnergyNetworkNode extends EnergyNetworkComponent {
 
     /**

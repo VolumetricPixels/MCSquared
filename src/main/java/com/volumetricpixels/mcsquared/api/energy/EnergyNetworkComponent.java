@@ -1,11 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.volumetricpixels.mcsquared.api.energy;
 
 /**
- *
  * @author thehutch <th3hutch@yahoo.co.uk>
  */
 public interface EnergyNetworkComponent {

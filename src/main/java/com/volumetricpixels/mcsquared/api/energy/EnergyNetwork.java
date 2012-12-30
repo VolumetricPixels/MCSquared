@@ -5,9 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import org.spout.api.geo.discrete.Point;
 
-/**
- * @author thehutch
- */
 public class EnergyNetwork {
     
     private final LinkedHashMap<Point, EnergyNetworkNode> network;
