@@ -1,40 +1,25 @@
-package com.volumetricpixels.mcsquared.api.energy;
+package com.volumetricpixels.mcsquared.api.energy.source;
 
-import org.spout.api.component.type.BlockComponent;
-
-public abstract class EnergyReserve extends BlockComponent implements EnergyNetworkNode {
-
-    private EnergyNetwork connectedNetwork;
+public abstract class EnergyReserve extends EnergySource {
     private double energyReserve;
     private double maxEnergyReserve;
-    
-    public EnergyReserve(double maxEnergyReserved) {
-        this.maxEnergyReserve = maxEnergyReserved;
-    }
-    
+
     public double getEnergyReserve() {
         return energyReserve;
     }
-    
+
     public double getMaxEnergyReserve() {
         return maxEnergyReserve;
     }
 
-    @Override
-    public EnergyNetwork getNetwork() {
-        return connectedNetwork;
+    protected void setMaxEnergyReserve(double maxEnergyReserve) {
+        this.maxEnergyReserve = maxEnergyReserve;
     }
 
-    @Override
-    public void setNetwork(EnergyNetwork network) {
-        this.connectedNetwork = network;
-    }
-    
     /**
      * Add the amount of energy to the reserve.
      * 
      * @param energy - Amount of energy to add
-     * 
      * @return Excess energy
      */
     public double addEnergyToReserve(double energy) {
@@ -49,7 +34,7 @@ public abstract class EnergyReserve extends BlockComponent implements EnergyNetw
         }
         return excessEnergy;
     }
-    
+
     /**
      * Remove the amount of energy from the reserve.
      * 
@@ -68,16 +53,14 @@ public abstract class EnergyReserve extends BlockComponent implements EnergyNetw
         }
         return overdrawnEnergy;
     }
-    
+
     @Override
     public boolean requestEnergy(double amount) {
-        //TODO
-        return true;
+        return true; // TODO
     }
 
     @Override
     public boolean sendEnergy(double amount) {
-        //TODO
-        return true;
+        return true; // TODO
     }
 }
