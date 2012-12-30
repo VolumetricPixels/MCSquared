@@ -1,9 +1,10 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-import org.spout.api.geo.discrete.Point;
+import org.spout.api.component.type.BlockComponent;
 
-public abstract class EnergyReserve implements EnergyNetworkNode {
+public abstract class EnergyReserve extends BlockComponent implements EnergyNetworkNode {
 
+    private EnergyNetwork connectedNetwork;
     private double energyReserve;
     private double maxEnergyReserve;
     
@@ -17,6 +18,16 @@ public abstract class EnergyReserve implements EnergyNetworkNode {
     
     public double getMaxEnergyReserve() {
         return maxEnergyReserve;
+    }
+
+    @Override
+    public EnergyNetwork getNetwork() {
+        return connectedNetwork;
+    }
+
+    @Override
+    public void setNetwork(EnergyNetwork network) {
+        this.connectedNetwork = network;
     }
     
     /**
@@ -68,15 +79,5 @@ public abstract class EnergyReserve implements EnergyNetworkNode {
     public boolean sendEnergy(double amount) {
         //TODO
         return true;
-    }
-
-    @Override
-    public void onConnect(Point location) {
-        //TODO
-    }
-
-    @Override
-    public void onDisconnect(Point location) {
-        //TODO
     }
 }
