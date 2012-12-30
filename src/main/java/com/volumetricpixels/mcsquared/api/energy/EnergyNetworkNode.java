@@ -3,7 +3,7 @@ package com.volumetricpixels.mcsquared.api.energy;
 /**
  * @author User
  */
-public interface EnergyNetworkNode extends Connectable {
+public interface EnergyNetworkNode extends EnergyNetworkComponent {
 
     /**
      * Used to request energy from the network
@@ -22,5 +22,5 @@ public interface EnergyNetworkNode extends Connectable {
      * @return Whether the transfer was successful
      */
     public boolean sendEnergy(double amount);
-    
+
 }
