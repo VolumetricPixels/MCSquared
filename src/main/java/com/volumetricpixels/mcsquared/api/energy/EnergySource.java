@@ -4,8 +4,15 @@ public interface EnergySource extends EnergyNode {
     /**
      * Adds the receiver to this node
      *
-     * @param destination Receiver to be added
+     * @param receiver Receiver to be added
      */
-    public void addReceiver(EnergyReceiver destination);
+    public void addReceiver(EnergyReceiver receiver);
+    
+    /**
+     * Removes the receiver from this node
+     * 
+     * @param receiver Receiver to be removed
+     */
+    public void removeReceiver(EnergyReceiver receiver);
 
 }

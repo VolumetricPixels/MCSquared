@@ -1,27 +1,50 @@
 package com.volumetricpixels.mcsquared.api.energy.impl;
 
 import com.volumetricpixels.mcsquared.api.energy.EnergyNode;
+import com.volumetricpixels.mcsquared.api.energy.EnergyReceiver;
+import com.volumetricpixels.mcsquared.api.energy.EnergySource;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import org.spout.api.component.type.BlockComponent;
+import org.spout.api.geo.cuboid.Block;
+import org.spout.api.material.block.BlockFace;
+import org.spout.api.material.block.BlockFaces;
 
 public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNode {
 
-    private final Set<EnergyNode> neightbours = new HashSet<EnergyNode>();
+    private final Set<EnergyNode> neighbours = new HashSet<EnergyNode>();
+    
+    @Override
+    public void onAttached() {
+        Block neighbour;
+        for(BlockFace face : BlockFaces.NESWBT) {
+            neighbour = getPosition().getBlock().translate(face);
+            if (neighbour.getComponent() instanceof EnergyNode) {
+                addNeighbour((EnergyNode) neighbour.getComponent());
+                ((EnergyNode)neighbour.getComponent()).addNeighbour(this);
+            }
+        }
+    }
     
     @Override
     public Set<EnergyNode> getNeighbours() {
-        return Collections.unmodifiableSet(neightbours);
+        return Collections.unmodifiableSet(neighbours);
     }
     
     @Override
     public boolean addNeighbour(EnergyNode node) {
-        return getNeighbours().add(node);
+        if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
+            ((EnergySource)this).addReceiver((EnergyReceiver) node);
+        }
+        return neighbours.add(node);
     }
     
     @Override
     public boolean removeNeighbour(EnergyNode node) {
-        return getNeighbours().remove(node);
+        if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
+            ((EnergySource)this).removeReceiver((EnergyReceiver) node);
+        }
+        return neighbours.remove(node);
     }    
 }
