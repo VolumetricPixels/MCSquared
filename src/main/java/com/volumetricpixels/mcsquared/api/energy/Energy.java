@@ -1,6 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-public class Energy {
+public class Energy implements Comparable<Energy> {
     
     public static final Energy EMPTY = new Energy(0f);
     private final float value;
@@ -31,5 +31,15 @@ public class Energy {
     
     public Energy split(int size) {
         return new Energy(value / size);
+    }
+
+    public int compareTo(Energy other) {
+        if (value > other.value) {
+            return 1;
+        }
+        if (value < other.value) {
+            return -1;
+        }
+        return 0;
     }
 }
