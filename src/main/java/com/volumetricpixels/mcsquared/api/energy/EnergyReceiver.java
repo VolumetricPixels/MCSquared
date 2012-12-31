@@ -9,5 +9,5 @@ public interface EnergyReceiver {
      * @param energy
      * @return energy that couldn't be received 
      */
-    public double onReceive(EnergySource source, double energy);
+    public Energy onReceive(EnergySource source, Energy energy);
 }
