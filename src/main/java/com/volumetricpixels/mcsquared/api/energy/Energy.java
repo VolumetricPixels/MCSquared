@@ -33,6 +33,7 @@ public class Energy implements Comparable<Energy> {
         return new Energy(value / size);
     }
 
+    @Override
     public int compareTo(Energy other) {
         if (value > other.value) {
             return 1;
