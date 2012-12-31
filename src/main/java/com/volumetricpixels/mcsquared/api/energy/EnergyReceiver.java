@@ -2,7 +2,7 @@ package com.volumetricpixels.mcsquared.api.energy;
 
 import java.util.Set;
 
-public interface EnergyReceiver extends EnergyNode {
+public interface EnergyReceiver {
     
     /**
      * Called when energy is received from a source

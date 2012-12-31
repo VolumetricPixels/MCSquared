@@ -1,6 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-public interface EnergySource extends EnergyNode {
+public interface EnergySource {
     /**
      * Adds the receiver to this node
      *
