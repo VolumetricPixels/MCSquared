@@ -1,10 +1,10 @@
+main: com.volumetricpixels.mcsquared.MCSquared
 name: MCSquared
 version: 0.0.1
-description: Energy and matter API.
+description: An API designed to be used to stop replications of generic data, for example; Energy
 
 author: Volumetric Pixels
-website: volumetricpixels.com
-depends:
+authors: [thehutch, kitskub, retsrif]
+website: http://volumetricpixels.com
 
-main: com.volumetricpixels.mcsquared.MCSquared
 platform: BOTH

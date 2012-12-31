@@ -9,7 +9,7 @@ public class MCSquared extends CommonPlugin {
     public void onEnable() {
         getLogger().log(Level.INFO, "MCSquared version: {0} has been Enabled.", getDescription().getVersion());
     }
-    
+
     @Override
     public void onDisable() {
         getLogger().log(Level.INFO, "MCSquared version: {0} has been Disabled.", getDescription().getVersion());

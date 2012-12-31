@@ -11,9 +11,9 @@ public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyH
     public Energy getEnergyHeld() {
         return energyHeld;
     }
-    
+
     /**
-     * 
+     *
      * @param energy
      * @return excess energy that couldn't be added
      */
@@ -32,7 +32,7 @@ public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyH
     }
 
     /**
-     * 
+     *
      * @param energy
      * @return amount of energy that couldn't be removed
      */
@@ -49,5 +49,4 @@ public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyH
         }
         return excess;
     }
-
 }

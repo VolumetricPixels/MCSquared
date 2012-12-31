@@ -8,11 +8,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EnergyUtils {
-    
+
     /**
-     * Safely splits the given energy across all the receivers and returns what is left.
-     * NOTE: The calling node should add itself to the visited list
-     * @param from 
+     * Safely splits the given energy across all the receivers and returns what
+     * is left. NOTE: The calling node should add itself to the visited list
+     *
+     * @param from
      * @param toGive
      * @param visited
      * @param receivers
@@ -27,7 +28,7 @@ public class EnergyUtils {
         Energy ret = Energy.EMPTY;
         Energy give = toGive.split(receivers.size());
         while (!left.isEmpty() && give.compareTo(Energy.EMPTY) > 0) {
-            for(EnergyReceiver receiver : left) {
+            for (EnergyReceiver receiver : left) {
                 if (visited.contains(receiver)) {
                     left.remove(receiver);
                     continue;

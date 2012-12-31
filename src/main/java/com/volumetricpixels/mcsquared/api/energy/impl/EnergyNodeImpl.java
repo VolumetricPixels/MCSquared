@@ -14,37 +14,37 @@ import org.spout.api.material.block.BlockFaces;
 public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNode {
 
     private final Set<EnergyNode> neighbours = new HashSet<EnergyNode>();
-    
+
     @Override
     public void onAttached() {
         Block neighbour;
-        for(BlockFace face : BlockFaces.NESWBT) {
+        for (BlockFace face : BlockFaces.NESWBT) {
             neighbour = getPosition().getBlock().translate(face);
             if (neighbour.getComponent() instanceof EnergyNode) {
                 addNeighbour((EnergyNode) neighbour.getComponent());
-                ((EnergyNode)neighbour.getComponent()).addNeighbour(this);
+                ((EnergyNode) neighbour.getComponent()).addNeighbour(this);
             }
         }
     }
-    
+
     @Override
     public Set<EnergyNode> getNeighbours() {
         return Collections.unmodifiableSet(neighbours);
     }
-    
+
     @Override
     public boolean addNeighbour(EnergyNode node) {
         if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
-            ((EnergySource)this).addReceiver((EnergyReceiver) node);
+            ((EnergySource) this).addReceiver((EnergyReceiver) node);
         }
         return neighbours.add(node);
     }
-    
+
     @Override
     public boolean removeNeighbour(EnergyNode node) {
         if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
-            ((EnergySource)this).removeReceiver((EnergyReceiver) node);
+            ((EnergySource) this).removeReceiver((EnergyReceiver) node);
         }
         return neighbours.remove(node);
-    }    
+    }
 }
