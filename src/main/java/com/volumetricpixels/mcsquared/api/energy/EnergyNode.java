@@ -8,10 +8,10 @@ public interface EnergyNode {
      * Gets a Set of all the connected EnergyNodes
      * @return 
      */
-    public Set<EnergyNode> getNeighbours();
+    public Set<EnergyNode> getNeighbors();
     
-    public boolean addNeighbour(EnergyNode node);
+    public boolean addNeighbor(EnergyNode node);
     
-    public boolean removeNeighbour(EnergyNode node);
+    public boolean removeNeighbor(EnergyNode node);
     
 }
