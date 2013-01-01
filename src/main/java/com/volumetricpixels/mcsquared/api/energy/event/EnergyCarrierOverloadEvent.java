@@ -4,9 +4,6 @@ import com.volumetricpixels.mcsquared.api.energy.Energy;
 import com.volumetricpixels.mcsquared.api.energy.EnergyCarrier;
 import org.spout.api.event.HandlerList;
 
-/**
- * @author thehutch <th3hutch@yahoo.co.uk>
- */
 public class EnergyCarrierOverloadEvent extends EnergyEvent {
 
     private static HandlerList handlerList = new HandlerList();

@@ -5,8 +5,8 @@ import com.volumetricpixels.mcsquared.api.energy.EnergyHolder;
 
 public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyHolder {
 
-    protected Energy energyHeld;
     protected Energy maxEnergy = new Energy(Float.MAX_VALUE);
+    protected Energy energyHeld;
 
     public Energy getEnergyHeld() {
         return energyHeld;
