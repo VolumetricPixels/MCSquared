@@ -9,12 +9,8 @@ import org.spout.api.material.BlockMaterial;
 public class EnergyCarrier extends EnergyNodeImpl implements EnergyReceiver, EnergySource {
 
     private final Set<EnergyReceiver> receivers = new HashSet<EnergyReceiver>();
-    private Energy maxEnergyTransfer;
-    
-    public EnergyCarrier() {
-        maxEnergyTransfer = new Energy(100);
-    }
-    
+    private Energy maxEnergyTransfer = new Energy(Float.MAX_VALUE);;
+
     @Override
     public Energy onReceive(EnergySource source, Set<EnergyNode> visited, Energy energy) {
         if (maxEnergyTransfer.compareTo(energy) > 0) {
@@ -33,13 +29,5 @@ public class EnergyCarrier extends EnergyNodeImpl implements EnergyReceiver, Ene
     @Override
     public void removeReceiver(EnergyReceiver receiver) {
         receivers.remove(receiver);
-    }
-    
-    public Energy getMaxEnergyTransfer() {
-        return maxEnergyTransfer;
-    }
-    
-    public void setMaxEnergyTransfer(Energy maximum) {
-        this.maxEnergyTransfer = maximum;
     }
 }
