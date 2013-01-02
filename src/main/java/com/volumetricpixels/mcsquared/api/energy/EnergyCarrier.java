@@ -13,8 +13,6 @@ public class EnergyCarrier extends EnergyNodeImpl implements EnergyReceiver, Ene
     protected final Set<EnergyReceiver> receivers = new HashSet<EnergyReceiver>();
     protected Energy maxEnergyTransfer = new Energy(Float.MAX_VALUE);
 
-    ;
-
     @Override
     public Energy onReceive(EnergySource source, Set<EnergyNode> visited, Energy energy) {
         if (maxEnergyTransfer.compareTo(energy) > 0) {
