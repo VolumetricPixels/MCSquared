@@ -1,6 +1,5 @@
 package com.volumetricpixels.mcsquared.api.pipes.liquid;
 
-import org.spout.api.entity.Player;
 public class Liquid implements Comparable<Liquid> {
 
     public static final Liquid EMPTY = new Liquid(0f);
@@ -8,8 +7,6 @@ public class Liquid implements Comparable<Liquid> {
     
     public Liquid(float value) {
         this.value = value;
-        
-        Player player;
     }
     
     public float getValue() {
