@@ -5,7 +5,6 @@ import com.volumetricpixels.mcsquared.api.pipes.PipeNode;
 import java.util.Set;
 
 public interface LiquidReceiver<T extends Liquid> extends PipeNode {
-    
-    public LiquidPacket<T> onReceive(EnergySource source, Set<PipeNode> visited, LiquidPacket<T> liquid);
 
+    public LiquidPacket<T> onReceive(EnergySource source, Set<PipeNode> visited, LiquidPacket<T> liquid);
 }

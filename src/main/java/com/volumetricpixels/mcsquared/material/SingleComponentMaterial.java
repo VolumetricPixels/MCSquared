@@ -14,18 +14,18 @@ import org.spout.api.material.block.BlockFace;
 import org.spout.api.math.Vector3;
 
 public abstract class SingleComponentMaterial extends BlockMaterial implements ComplexMaterial {
-	
-   private final Class<? extends BlockComponent> componentType;
 
-	public SingleComponentMaterial(String name, Class<? extends BlockComponent> component, String model) {
-		super((short) 0, name, model);
-		this.componentType = component;
-	}
+    private final Class<? extends BlockComponent> componentType;
 
-	public SingleComponentMaterial(String name, int data, Material parent, String model, Class<? extends BlockComponent> component) {
-		super(name, data, parent, model);
-		this.componentType = component;
-	}
+    public SingleComponentMaterial(String name, Class<? extends BlockComponent> component, String model) {
+        super((short) 0, name, model);
+        this.componentType = component;
+    }
+
+    public SingleComponentMaterial(String name, int data, Material parent, String model, Class<? extends BlockComponent> component) {
+        super(name, data, parent, model);
+        this.componentType = component;
+    }
 
     public SingleComponentMaterial(String name, Class<? extends BlockComponent> component) {
         super(name);
@@ -35,23 +35,23 @@ public abstract class SingleComponentMaterial extends BlockMaterial implements C
     public SingleComponentMaterial(String name, short id, Class<? extends BlockComponent> component) {
         super(name, id);
         this.componentType = component;
-        
+
     }
 
-	@Override
-	public void onInteractBy(Entity entity, Block block, PlayerInteractEvent.Action type, BlockFace clickedFace) {
-		super.onInteract(entity, block, type, clickedFace);
-		BlockComponent c = block.getComponent();
-		c.onInteract(entity, type);
-	}
+    @Override
+    public void onInteractBy(Entity entity, Block block, PlayerInteractEvent.Action type, BlockFace clickedFace) {
+        super.onInteract(entity, block, type, clickedFace);
+        BlockComponent c = block.getComponent();
+        c.onInteract(entity, type);
+    }
 
-   @Override
-	public BlockComponent createBlockComponent() {
-		try {
-			return componentType.newInstance();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    @Override
+    public BlockComponent createBlockComponent() {
+        try {
+            return componentType.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

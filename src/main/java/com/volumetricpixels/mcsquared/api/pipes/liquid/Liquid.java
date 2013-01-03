@@ -1,5 +1,7 @@
 package com.volumetricpixels.mcsquared.api.pipes.liquid;
 
-public interface Liquid {
-    // TODO create object from packet
+import org.spout.api.util.Named;
+
+public interface Liquid extends Named {
+    
 }

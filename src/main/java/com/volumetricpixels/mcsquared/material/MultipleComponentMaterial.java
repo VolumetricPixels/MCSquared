@@ -12,6 +12,7 @@ import org.spout.api.material.Material;
 import org.spout.api.material.block.BlockFace;
 
 public abstract class MultipleComponentMaterial extends BlockMaterial implements ComplexMaterial {
+
     private final Collection<Class<? extends BlockComponent>> componentTypes;
 
     public MultipleComponentMaterial(String name, List<Class<? extends BlockComponent>> component, String model) {
@@ -32,7 +33,7 @@ public abstract class MultipleComponentMaterial extends BlockMaterial implements
     public MultipleComponentMaterial(String name, short id, List<Class<? extends BlockComponent>> component) {
         super(name, id);
         this.componentTypes = component;
-        
+
     }
 
     @Override
@@ -51,5 +52,4 @@ public abstract class MultipleComponentMaterial extends BlockMaterial implements
         }
         return null;
     }
-
 }

@@ -11,7 +11,7 @@ public class BlockUtils {
         }
         return null;
     }
-    
+
     public static <T extends Component> T hasImplementation(Class<T> implClass, Block block) {
         if (implClass != null && implClass.isAssignableFrom(block.getComponent().getClass())) {
             BlockComponentHolderComponent comp = (BlockComponentHolderComponent) block.getComponent();
@@ -21,7 +21,7 @@ public class BlockUtils {
         }
         return null;
     }
-    
+
     public static <T extends Object, U extends Component> T hasEither(Class<T> inte, Class<U> impl, Block block) {
         T has1 = hasInterface(inte, block);
         if (has1 != null) {
@@ -33,5 +33,4 @@ public class BlockUtils {
         }
         return null;
     }
-
 }
