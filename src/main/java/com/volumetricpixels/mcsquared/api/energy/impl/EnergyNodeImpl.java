@@ -1,5 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy.impl;
 
+import com.volumetricpixels.mcsquared.BlockUtils;
 import com.volumetricpixels.mcsquared.api.energy.EnergyNode;
 import com.volumetricpixels.mcsquared.api.energy.EnergyReceiver;
 import com.volumetricpixels.mcsquared.api.energy.EnergySource;
@@ -20,9 +21,10 @@ public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNod
         Block neighbour;
         for (BlockFace face : BlockFaces.NESWBT) {
             neighbour = getPosition().getBlock().translate(face);
-            if (neighbour.getComponent() instanceof EnergyNode) {
-                addNeighbour((EnergyNode) neighbour.getComponent());
-                ((EnergyNode) neighbour.getComponent()).addNeighbour(this);
+            EnergyNode node = BlockUtils.hasEither(EnergyNode.class, EnergyNodeImpl.class, neighbour);
+            if (node != null) {
+                addNeighbour(node);
+                node.addNeighbour(this);
             }
         }
     }
