@@ -1,4 +1,4 @@
-package com.volumetricpixels.mcsquared;
+package com.volumetricpixels.mcsquared.material;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.BiMap;
@@ -11,6 +11,8 @@ import org.spout.api.Spout;
 import org.spout.api.component.Component;
 import org.spout.api.component.ComponentHolder;
 import org.spout.api.component.type.BlockComponent;
+import org.spout.api.entity.Entity;
+import org.spout.api.event.player.PlayerInteractEvent.Action;
 
 public class BlockComponentHolderComponent extends BlockComponent implements ComponentHolder {
 
@@ -184,6 +186,15 @@ public class BlockComponentHolderComponent extends BlockComponent implements Com
         for (Component c : components.values()) {
             if (c.canTick()) {
                 c.tick(dt);
+            }
+        }
+    }
+
+    @Override
+    public void onInteract(Entity entity, Action type) {
+        for (Component c : components.values()) {
+            if (c instanceof BlockComponent) {
+                ((BlockComponent) c).onInteract(entity, type);
             }
         }
     }

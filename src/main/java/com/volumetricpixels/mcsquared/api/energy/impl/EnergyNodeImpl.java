@@ -1,6 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy.impl;
 
-import com.volumetricpixels.mcsquared.BlockUtils;
+import com.volumetricpixels.mcsquared.material.BlockUtils;
 import com.volumetricpixels.mcsquared.api.energy.EnergyNode;
 import com.volumetricpixels.mcsquared.api.energy.EnergyReceiver;
 import com.volumetricpixels.mcsquared.api.energy.EnergySource;

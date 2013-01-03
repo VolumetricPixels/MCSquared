@@ -1,4 +1,4 @@
-package com.volumetricpixels.mcsquared;
+package com.volumetricpixels.mcsquared.material;
 
 import org.spout.api.component.Component;
 import org.spout.api.geo.cuboid.Block;
