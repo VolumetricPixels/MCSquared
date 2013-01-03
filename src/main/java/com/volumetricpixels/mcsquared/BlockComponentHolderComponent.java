@@ -178,4 +178,15 @@ public class BlockComponentHolderComponent extends BlockComponent implements Com
 
 		return null;
 	}
+
+    @Override
+    public void onTick(float dt) {
+        for (Component c : components.values()) {
+            if (c.canTick()) {
+                c.tick(dt);
+            }
+        }
+    }
+    
+    
 }
