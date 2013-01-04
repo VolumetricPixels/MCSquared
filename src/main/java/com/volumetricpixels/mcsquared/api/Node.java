@@ -6,11 +6,10 @@ public interface Node<T> {
 	
 	/**
      * Gets a Set of all the connected Nodes
-	 * @return 
      *
      * @return All neighbors connected to this block
      */
-    public Set<Node<T>> getNeighbors();
+    public Set<? extends Node<T>> getNeighbors();
 
     /**
      * Add a neighbor node to this node

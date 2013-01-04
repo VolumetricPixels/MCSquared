@@ -1,6 +1,5 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-import com.volumetricpixels.mcsquared.api.Node;
 import com.volumetricpixels.mcsquared.api.energy.event.EnergyCarrierOverloadEvent;
 import com.volumetricpixels.mcsquared.api.energy.impl.EnergyNodeImpl;
 import com.volumetricpixels.mcsquared.api.utils.EnergyUtils;

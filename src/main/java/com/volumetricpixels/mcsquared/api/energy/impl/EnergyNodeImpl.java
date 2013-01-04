@@ -1,5 +1,7 @@
 package com.volumetricpixels.mcsquared.api.energy.impl;
 
+import com.volumetricpixels.mcsquared.api.Node;
+import com.volumetricpixels.mcsquared.api.energy.Energy;
 import com.volumetricpixels.mcsquared.material.BlockUtils;
 import com.volumetricpixels.mcsquared.api.energy.EnergyNode;
 import com.volumetricpixels.mcsquared.api.energy.EnergyReceiver;
@@ -14,28 +16,28 @@ import org.spout.api.material.block.BlockFaces;
 
 public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNode {
 
-    private final Set<EnergyNode> neighbours = new HashSet<EnergyNode>();
+    private final Set<Node<Energy>> neighbours = new HashSet<Node<Energy>>();
 
     @Override
     public void onAttached() {
         Block neighbour;
         for (BlockFace face : BlockFaces.NESWBT) {
             neighbour = getPosition().getBlock().translate(face);
-            EnergyNode node = BlockUtils.hasEither(EnergyNode.class, EnergyNodeImpl.class, neighbour);
+            Node<Energy> node = BlockUtils.hasEitherNode(EnergyNode.class, EnergyNodeImpl.class, neighbour);
             if (node != null) {
-                addNeighbour(node);
-                node.addNeighbour(this);
+                addNeighbor(node);
+                node.addNeighbor(this);
             }
         }
     }
-
+    
     @Override
-    public Set<EnergyNode> getNeighbours() {
+    public Set<Node<Energy>> getNeighbors() {
         return Collections.unmodifiableSet(neighbours);
     }
 
     @Override
-    public boolean addNeighbour(EnergyNode node) {
+    public boolean addNeighbor(Node<Energy> node) {
         if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
             ((EnergySource) this).addReceiver((EnergyReceiver) node);
         }
@@ -43,7 +45,7 @@ public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNod
     }
 
     @Override
-    public boolean removeNeighbour(EnergyNode node) {
+    public boolean removeNeighbor(Node<Energy> node) {
         if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
             ((EnergySource) this).removeReceiver((EnergyReceiver) node);
         }

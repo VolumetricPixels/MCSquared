@@ -22,7 +22,7 @@ public class BlockUtils {
         return null;
     }
 
-    public static <T extends Object, U extends Component> T hasEither(Class<T> inte, Class<U> impl, Block block) {
+    public static <T extends Object, U extends Component> T hasEitherNode(Class<T> inte, Class<U> impl, Block block) {
         T has1 = hasInterface(inte, block);
         if (has1 != null) {
             return has1;

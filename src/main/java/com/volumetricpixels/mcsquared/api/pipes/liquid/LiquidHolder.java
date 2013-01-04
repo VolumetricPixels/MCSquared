@@ -1,8 +1,9 @@
 package com.volumetricpixels.mcsquared.api.pipes.liquid;
 
-import com.volumetricpixels.mcsquared.api.pipes.PipeNode;
+import com.volumetricpixels.mcsquared.api.Node;
+import com.volumetricpixels.mcsquared.api.pipes.Pipeable;
 
-public interface LiquidHolder<T extends Liquid> extends PipeNode {
+public interface LiquidHolder<T extends Liquid> extends Node<Pipeable> {
 
     public LiquidPacket<? extends T> getLiquidHeld();
 
