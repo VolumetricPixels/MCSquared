@@ -1,6 +1,8 @@
 package com.volumetricpixels.mcsquared.api.pipes.liquid;
 
-public class LiquidPacket<T extends Liquid> implements Comparable<LiquidPacket<T>> {
+import com.volumetricpixels.mcsquared.api.pipes.Pipeable;
+
+public class LiquidPacket<T extends Liquid> implements Comparable<LiquidPacket<T>>, Pipeable {
 
     private final float value;
     private final Class<T> liquid;
