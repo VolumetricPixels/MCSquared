@@ -25,7 +25,7 @@ public class EnergyUtils {
         }
         Energy excess = Energy.EMPTY;
         Set<EnergyReceiver> left = new HashSet<EnergyReceiver>(receivers);//If it's here it either hasn't been visited or it's full
-        Energy ret = Energy.EMPTY;
+        Energy returned = Energy.EMPTY;
         Energy give = toGive.split(receivers.size());
         while (!left.isEmpty() && give.compareTo(Energy.EMPTY) > 0) {
             for (EnergyReceiver receiver : left) {
@@ -33,9 +33,9 @@ public class EnergyUtils {
                     left.remove(receiver);
                     continue;
                 }
-                ret = ret.add(receiver.onReceive(from, visited, give));
+                returned = returned.add(receiver.onReceive(from, visited, give));
             }
-            give = ret.split(left.size());
+            give = returned.split(left.size());
         }
         return excess;
     }

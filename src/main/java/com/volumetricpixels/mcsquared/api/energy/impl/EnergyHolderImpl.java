@@ -6,7 +6,7 @@ import com.volumetricpixels.mcsquared.api.energy.EnergyHolder;
 public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyHolder {
 
     protected Energy maxEnergy = new Energy(Float.MAX_VALUE);
-    protected Energy energyHeld;
+    protected Energy energyHeld = Energy.EMPTY;
 
     public Energy getEnergyHeld() {
         return energyHeld;
@@ -22,7 +22,7 @@ public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyH
         Energy excess = Energy.EMPTY;
         if (energy.getValue() < 0) {
             throw new IllegalArgumentException("Cannot add negative energy!");
-        } else if (energyHeld.add(energy).getValue() > maxEnergy.getValue()) {//TODO compareTo
+        } else if (energyHeld.add(energy).compareTo(maxEnergy) > 0) {
             excess = energyHeld.add(energy).subtract(maxEnergy);
             energyHeld = maxEnergy;
         } else {
