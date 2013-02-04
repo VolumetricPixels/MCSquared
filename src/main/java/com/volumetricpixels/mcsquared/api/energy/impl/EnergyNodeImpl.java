@@ -30,7 +30,7 @@ public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNod
             }
         }
     }
-    
+
     @Override
     public Set<Node<Energy>> getNeighbors() {
         return Collections.unmodifiableSet(neighbours);
