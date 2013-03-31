@@ -1,17 +1,16 @@
 package com.volumetricpixels.mcsquared;
 
-import java.util.logging.Level;
 import org.spout.api.plugin.CommonPlugin;
 
+/**
+ * Main class for the MCSquared plugin
+ */
 public class MCSquared extends CommonPlugin {
+	@Override
+	public void onEnable() {
+	}
 
-    @Override
-    public void onEnable() {
-        getLogger().log(Level.INFO, "MCSquared version: {0} has been Enabled.", getDescription().getVersion());
-    }
-
-    @Override
-    public void onDisable() {
-        getLogger().log(Level.INFO, "MCSquared version: {0} has been Disabled.", getDescription().getVersion());
-    }
+	@Override
+	public void onDisable() {
+	}
 }
