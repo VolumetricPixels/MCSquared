@@ -1,13 +1,13 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-public interface EnergyHolder extends EnergyNode {
+public interface EnergyHolder<T extends Energy<T>> extends EnergyNode<T> {
 
     /**
      * Gets the energy held inside on this node
      *
      * @return Energy held
      */
-    public Energy getEnergyHeld();
+    public T getEnergyHeld();
 
     /**
      * Adds the specified energy to the given
@@ -16,7 +16,7 @@ public interface EnergyHolder extends EnergyNode {
      * @param energy
      * @return excess energy that couldn't be added
      */
-    public Energy addEnergy(Energy energy);
+    public T addEnergy(T energy);
 
     /**
      * Removes the specified energy to the given
@@ -25,5 +25,5 @@ public interface EnergyHolder extends EnergyNode {
      * @param energy
      * @return amount of energy that couldn't be removed
      */
-    public Energy removeEnergy(Energy energy);
+    public T removeEnergy(T energy);
 }

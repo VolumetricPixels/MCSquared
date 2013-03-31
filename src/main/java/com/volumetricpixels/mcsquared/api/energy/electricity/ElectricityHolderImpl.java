@@ -1,14 +1,13 @@
-package com.volumetricpixels.mcsquared.api.energy.impl;
+package com.volumetricpixels.mcsquared.api.energy.electricity;
 
-import com.volumetricpixels.mcsquared.api.energy.Energy;
 import com.volumetricpixels.mcsquared.api.energy.EnergyHolder;
 
-public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyHolder {
+public abstract class ElectricityHolderImpl extends EnergyNodeImpl<Electricity> implements EnergyHolder<Electricity> {
 
-    protected Energy maxEnergy = new Energy(Float.MAX_VALUE);
-    protected Energy energyHeld = Energy.EMPTY;
+    protected Electricity maxEnergy = new Electricity(Float.MAX_VALUE);
+    protected Electricity energyHeld = Electricity.EMPTY;
 
-    public Energy getEnergyHeld() {
+    public Electricity getEnergyHeld() {
         return energyHeld;
     }
 
@@ -18,8 +17,8 @@ public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyH
      * @return excess energy that couldn't be added
      */
     @Override
-    public Energy addEnergy(Energy energy) {
-        Energy excess = Energy.EMPTY;
+    public Electricity addEnergy(Electricity energy) {
+        Electricity excess = energy.newEmpty();
         if (energy.getValue() < 0) {
             throw new IllegalArgumentException("Cannot add negative energy!");
         } else if (energyHeld.add(energy).compareTo(maxEnergy) > 0) {
@@ -37,13 +36,13 @@ public abstract class EnergyHolderImpl extends EnergyNodeImpl implements EnergyH
      * @return amount of energy that couldn't be removed
      */
     @Override
-    public Energy removeEnergy(Energy energy) {
-        Energy excess = Energy.EMPTY;
+    public Electricity removeEnergy(Electricity energy) {
+        Electricity excess = energy.newEmpty();
         if (energy.getValue() < 0) {
             throw new IllegalArgumentException("Cannot remove negative energy!");
         } else if (energyHeld.subtract(energy).getValue() < 0) {
-            excess = new Energy(Math.abs(energyHeld.getValue() - energy.getValue()));
-            energyHeld = Energy.EMPTY;
+            excess = new Electricity(Math.abs(energyHeld.getValue() - energy.getValue()));
+            energyHeld = energy.newEmpty();
         } else {
             energyHeld = energyHeld.subtract(energy);
         }

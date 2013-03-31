@@ -13,27 +13,29 @@ public class EnergyUtils {
      * Safely splits the given energy across all the receivers and returns what
      * is left. NOTE: The calling node should add itself to the visited list
      *
+     * @param <T> Type of energy
      * @param from
      * @param toGive
      * @param visited
      * @param receivers
      * @return leftover energy that none of the receivers wanted
      */
-    public static Energy safeSplit(EnergySource from, Energy toGive, Set<EnergyNode> visited, Set<EnergyReceiver> receivers) {
+    public static <T extends Energy<T>> T safeSplit(EnergySource<T> from, T toGive, Set<EnergyNode<T>> visited, Set<EnergyReceiver<T>> receivers) {
         if (receivers.isEmpty()) {
             return toGive;
         }
-        Energy excess = Energy.EMPTY;
-        Set<EnergyReceiver> left = new HashSet<EnergyReceiver>(receivers);//If it's here it either hasn't been visited or it's full
-        Energy returned = Energy.EMPTY;
-        Energy give = toGive.split(receivers.size());
-        while (!left.isEmpty() && give.compareTo(Energy.EMPTY) > 0) {
-            for (EnergyReceiver receiver : left) {
+        T excess = toGive.newEmpty();
+        Set<EnergyReceiver<T>> left = new HashSet<EnergyReceiver<T>>(receivers);//If it's here it either hasn't been visited or it's full
+        T returned = toGive.newEmpty();
+        T give = toGive.split(receivers.size());
+        while (!left.isEmpty() && !give.isEmpty()) {
+            for (EnergyReceiver<T> receiver : left) {
                 if (visited.contains(receiver)) {
                     left.remove(receiver);
                     continue;
                 }
-                returned = returned.add(receiver.onReceive(from, visited, give));
+                T onReceive = receiver.onReceive(from, visited, give);
+                returned = returned.add(onReceive);
             }
             give = returned.split(left.size());
         }

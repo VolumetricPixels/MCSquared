@@ -1,46 +1,19 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-public class Energy implements Comparable<Energy> {
+public abstract class Energy<T extends Energy<?>> implements Comparable<T> {
 
-    public static final Energy EMPTY = new Energy(0f);
-    private final float value;
+    public abstract T add(T other);
 
-    public Energy(float value) {
-        this.value = value;
-    }
+    public abstract T divide(T other);
 
-    public float getValue() {
-        return value;
-    }
+    public abstract T multiply(T other);
 
-    public Energy add(Energy other) {
-        return new Energy(value + other.value);
-    }
+    public abstract T split(int size);
 
-    public Energy subtract(Energy other) {
-        return new Energy(value - other.value);
-    }
+    public abstract T subtract(T other);
+    
+    public abstract boolean isEmpty();
+    
+    public abstract T newEmpty();
 
-    public Energy multiply(Energy other) {
-        return new Energy(value * other.value);
-    }
-
-    public Energy divide(Energy other) {
-        return new Energy(value / other.value);
-    }
-
-    public Energy split(int size) {
-        return new Energy(value / size);
-    }
-
-    @Override
-    public int compareTo(Energy other) {
-        if (value > other.value) {
-            return 1;
-        }
-        if (value < other.value) {
-            return -1;
-        }
-        return 0;
-    }
 }

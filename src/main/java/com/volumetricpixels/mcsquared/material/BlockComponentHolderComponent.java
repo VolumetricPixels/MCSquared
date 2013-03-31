@@ -130,7 +130,7 @@ public class BlockComponentHolderComponent extends BlockComponent implements Com
     @Override
     public <T extends Component> T get(Class<T> type) {
         Preconditions.checkNotNull(type);
-        if (type == null) {
+        if (type == null) {//TODO WTF should not ever be true
             return null;
         }
         Component component = components.get(type);
@@ -151,18 +151,6 @@ public class BlockComponentHolderComponent extends BlockComponent implements Com
     }
 
     @Override
-    @Deprecated
-    public boolean has(Class<? extends Component> type) {
-        return get(type) != null;
-    }
-
-    @Override
-    @Deprecated
-    public boolean hasExact(Class<? extends Component> type) {
-        return getExact(type) != null;
-    }
-
-    @Override
     public Collection<Component> values() {
         synchronized (components) {
             return new ArrayList<Component>(components.values());
@@ -170,7 +158,7 @@ public class BlockComponentHolderComponent extends BlockComponent implements Com
     }
 
     @SuppressWarnings("unchecked")
-    private <T extends Component> T findComponent(Class<T> type) {
+    public <T> T findComponent(Class<T> type) {//Must be public and not necesarily be a component to allow it to check interfaces
         Preconditions.checkNotNull(type);
         synchronized (components) {
             for (Component component : values()) {

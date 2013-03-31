@@ -1,20 +1,20 @@
 package com.volumetricpixels.mcsquared.api.energy.event;
 
 import com.volumetricpixels.mcsquared.api.energy.Energy;
-import com.volumetricpixels.mcsquared.api.energy.EnergyCarrier;
+import com.volumetricpixels.mcsquared.api.energy.electricity.ElectricityCarrier;
 import org.spout.api.event.HandlerList;
 
-public class EnergyCarrierOverloadEvent extends EnergyEvent {
+public class ElectricityCarrierOverloadEvent extends EnergyEvent {
 
     private static HandlerList handlerList = new HandlerList();
-    private final EnergyCarrier carrier;
+    private final ElectricityCarrier carrier;
 
-    public EnergyCarrierOverloadEvent(Energy energy, EnergyCarrier wire) {
+    public ElectricityCarrierOverloadEvent(Energy energy, ElectricityCarrier wire) {
         super(energy);
         this.carrier = wire;
     }
 
-    public EnergyCarrier getCarrier() {
+    public ElectricityCarrier getCarrier() {
         return carrier;
     }
 

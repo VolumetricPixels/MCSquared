@@ -1,4 +1,4 @@
-package com.volumetricpixels.mcsquared.api.energy.impl;
+package com.volumetricpixels.mcsquared.api.energy.electricity;
 
 import com.volumetricpixels.mcsquared.api.Node;
 import com.volumetricpixels.mcsquared.api.energy.Energy;
@@ -14,16 +14,16 @@ import org.spout.api.geo.cuboid.Block;
 import org.spout.api.material.block.BlockFace;
 import org.spout.api.material.block.BlockFaces;
 
-public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNode {
+public abstract class EnergyNodeImpl<T extends Energy<T>> extends BlockComponent implements EnergyNode<T> {
 
-    private final Set<Node<Energy>> neighbours = new HashSet<Node<Energy>>();
+    private final Set<Node<T>> neighbours = new HashSet<Node<T>>();
 
     @Override
     public void onAttached() {
         Block neighbour;
         for (BlockFace face : BlockFaces.NESWBT) {
             neighbour = getPosition().getBlock().translate(face);
-            Node<Energy> node = BlockUtils.hasEitherNode(EnergyNode.class, EnergyNodeImpl.class, neighbour);
+            Node<T> node = BlockUtils.getInterfaceOrComponent(EnergyNode.class, neighbour);
             if (node != null) {
                 addNeighbor(node);
                 node.addNeighbor(this);
@@ -32,22 +32,22 @@ public abstract class EnergyNodeImpl extends BlockComponent implements EnergyNod
     }
 
     @Override
-    public Set<Node<Energy>> getNeighbors() {
+    public Set<Node<T>> getNeighbors() {
         return Collections.unmodifiableSet(neighbours);
     }
 
     @Override
-    public boolean addNeighbor(Node<Energy> node) {
+    public boolean addNeighbor(Node<T> node) {
         if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
-            ((EnergySource) this).addReceiver((EnergyReceiver) node);
+            ((EnergySource<T>) this).addReceiver((EnergyReceiver<T>) node);
         }
         return neighbours.add(node);
     }
 
     @Override
-    public boolean removeNeighbor(Node<Energy> node) {
+    public boolean removeNeighbor(Node<T> node) {
         if ((node instanceof EnergyReceiver) && (this instanceof EnergySource)) {
-            ((EnergySource) this).removeReceiver((EnergyReceiver) node);
+            ((EnergySource<T>) this).removeReceiver((EnergyReceiver<T>) node);
         }
         return neighbours.remove(node);
     }
