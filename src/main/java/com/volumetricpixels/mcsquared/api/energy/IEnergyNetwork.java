@@ -1,10 +1,13 @@
-package com.volumetricpixels.mcsquared.api.electricity;
+package com.volumetricpixels.mcsquared.api.energy;
+
+import com.volumetricpixels.mcsquared.api.electricity.IElectricityPacket;
+
 
 /**
  * Represents an network of consumers, producers, transmitters, receivers and
  * conductors of electricity, or an 'electricity network'
  */
-public interface IElectricityNetwork {
+public interface IEnergyNetwork {
 	/**
 	 * Causes the given electricity network member to start producing
 	 * electricity for this electricity network. If member is null, or
@@ -13,7 +16,7 @@ public interface IElectricityNetwork {
 	 * @param member The member to start producing electricity
 	 * @param packet The amount of electricity to start producing
 	 */
-	void startProduction(IElectricityNetworkMember member, IElectricityPacket packet);
+	void startProduction(IEnergyNetworkMember member, IElectricityPacket packet);
 
 	/**
 	 * Causes the given electricity network member to start producing
@@ -24,7 +27,7 @@ public interface IElectricityNetwork {
 	 * @param amps The amount of amps to start producing
 	 * @param volts The amount of volts to start producing
 	 */
-	void startProduction(IElectricityNetworkMember member, double amps, double volts);
+	void startProduction(IEnergyNetworkMember member, double amps, double volts);
 
 	/**
 	 * Stops the given electricity network manager from producing
@@ -34,7 +37,7 @@ public interface IElectricityNetwork {
 	 * @param member The member to stop producing electricity
 	 * @throws IllegalArgumentException If member is null
 	 */
-	void stopProduction(IElectricityNetworkMember member);
+	void stopProduction(IEnergyNetworkMember member);
 
 	/**
 	 * Checks if the given electricity network member is currently producing
@@ -46,7 +49,7 @@ public interface IElectricityNetwork {
 	 *         network
 	 * @throws IllegalArgumentException If member is null
 	 */
-	boolean isProducing(IElectricityNetworkMember member);
+	boolean isProducing(IEnergyNetworkMember member);
 
 	/**
 	 * Causes the given electricity network manager to start to request the
@@ -58,7 +61,7 @@ public interface IElectricityNetwork {
 	 * @param packet The amount of electricity to start requesting
 	 * @throws IllegalArgumentException If an argument is null
 	 */
-	void startRequesting(IElectricityNetworkMember member, IElectricityPacket packet);
+	void startRequesting(IEnergyNetworkMember member, IElectricityPacket packet);
 
 	/**
 	 * Causes the given electricity network manager to start to request the
@@ -71,7 +74,7 @@ public interface IElectricityNetwork {
 	 * @param volts The amount of volts to request from the network
 	 * @throws IllegalArgumentException If member is null
 	 */
-	void startRequesting(IElectricityNetworkMember member, double amps, double volts);
+	void startRequesting(IEnergyNetworkMember member, double amps, double volts);
 
 	/**
 	 * Stops the given electricity network member from requesting any more
@@ -81,7 +84,7 @@ public interface IElectricityNetwork {
 	 * @param member The member to stop incoming requests from
 	 * @throws IllegalArgumentException If member is null
 	 */
-	void stopRequesting(IElectricityNetworkMember member);
+	void stopRequesting(IEnergyNetworkMember member);
 
 	/**
 	 * Checks if the given electricity network member is requesting to received
@@ -92,7 +95,7 @@ public interface IElectricityNetwork {
 	 * @return Whether the given member is requesting from this network
 	 * @throws IllegalArgumentException If member is null
 	 */
-	boolean isRequesting(IElectricityNetworkMember member);
+	boolean isRequesting(IEnergyNetworkMember member);
 
 	/**
 	 * Gets the amount of electricity produced by this electricity network,
@@ -105,7 +108,7 @@ public interface IElectricityNetwork {
 	 * @return The amount of electricity this network produces minus that
 	 *         produced by members contained in excluded
 	 */
-	IElectricityPacket getProduced(IElectricityNetworkMember... excluded);
+	IElectricityPacket getProduced(IEnergyNetworkMember... excluded);
 
 	/**
 	 * Gets the amount of electricity produced by the given members. If any of
@@ -117,5 +120,5 @@ public interface IElectricityNetwork {
 	 * @return The amount of electricity produced by given members
 	 * @throws IllegalArgumentException If members is null or invalid
 	 */
-	IElectricityPacket getProducedBy(IElectricityNetworkMember... members);
+	IElectricityPacket getProducedBy(IEnergyNetworkMember... members);
 }

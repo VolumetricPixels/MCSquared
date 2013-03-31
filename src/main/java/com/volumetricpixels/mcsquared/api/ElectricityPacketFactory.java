@@ -32,7 +32,7 @@ public abstract class ElectricityPacketFactory {
 
 	private static ElectricityPacketFactory factory;
 
-	public void setFactory(ElectricityPacketFactory newFactory) {
+	public static void setFactory(ElectricityPacketFactory newFactory) {
 		if (newFactory == null) {
 			throw new IllegalArgumentException("newFactory must not be null!");
 		}

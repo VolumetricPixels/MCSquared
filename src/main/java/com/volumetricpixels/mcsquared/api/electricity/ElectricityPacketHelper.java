@@ -60,15 +60,15 @@ public class ElectricityPacketHelper {
 		return watts / 3600;
 	}
 
-	public static double getWattHoursFromAmps(double amps, double voltage) {
-		return getWattHours(getWattsFromAV(amps, voltage));
+	public static double getWattHoursFromAmps(double amps, double volts) {
+		return getWattHours(getWattsFromAV(amps, volts));
 	}
 
-	public static double getResistance(double amps, double voltage) {
-		return voltage / amps;
+	public static double getResistance(double amps, double volts) {
+		return volts / amps;
 	}
 
-	public static double getConductance(double amps, double voltage) {
-		return amps / voltage;
+	public static double getConductance(double amps, double volts) {
+		return amps / volts;
 	}
 }

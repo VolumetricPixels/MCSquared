@@ -1,9 +1,11 @@
 package com.volumetricpixels.mcsquared.api.electricity;
 
+import com.volumetricpixels.mcsquared.api.energy.IEnergyNetworkMember;
+
 /**
  * Represents a conductor of electricity
  */
-public interface IElectricityConductor extends IElectricityNetworkMember {
+public interface IElectricityConductor extends IEnergyNetworkMember {
 	/**
 	 * Gets the resistance of this conductor
 	 * 

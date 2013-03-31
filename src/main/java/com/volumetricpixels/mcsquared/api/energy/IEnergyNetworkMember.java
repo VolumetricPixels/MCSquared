@@ -1,40 +1,41 @@
-package com.volumetricpixels.mcsquared.api.electricity;
+package com.volumetricpixels.mcsquared.api.energy;
 
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.material.block.BlockFace;
 
+
 /**
- * Represents a member of an electricity network
+ * Represents a member of an energy network
  */
-public interface IElectricityNetworkMember {
+public interface IEnergyNetworkMember {
 	/**
-	 * Gets the basic type of electricity member this member is
+	 * Gets the basic type of energy member this member is
 	 * 
-	 * @return This electricity network member's basic type
+	 * @return This energy network member's basic type
 	 */
-	ElectricityNetworkMemberType getBasicType();
+	EnergyNetworkMemberType getBasicType();
 
 	/**
-	 * Gets the position of this electricity network member
+	 * Gets the position of this energy network member
 	 * 
 	 * @return A Point representing the position of this network member
 	 */
 	Point getPosition();
 
 	/**
-	 * Gets the network this electricity network member is a part of
+	 * Gets the network this energy network member is a part of
 	 * 
-	 * @return The electricity network this member is a part of
+	 * @return The energy network this member is a part of
 	 */
-	IElectricityNetwork getNetwork();
+	IEnergyNetwork getNetwork();
 
 	/**
 	 * Gets an array of adjacent network members to this one
 	 * 
 	 * @param update Whether to update the adjacent members
-	 * @return An array of electricity network members adjacent to this one
+	 * @return An array of energy network members adjacent to this one
 	 */
-	IElectricityNetworkMember[] getAdjacentMembers(boolean update);
+	IEnergyNetworkMember[] getAdjacentMembers(boolean update);
 
 	/**
 	 * Returns whether this network member can connect to the adjacent block in
@@ -47,26 +48,26 @@ public interface IElectricityNetworkMember {
 	boolean canConnect(BlockFace face);
 
 	/**
-	 * Contains all basic types of electricity network member
+	 * Contains all basic types of energy network member
 	 * 
 	 * All complex types extend a basic concept (e.g transmitter extends the
 	 * concept of consumer, receiver extends the concept of producer)
 	 */
-	public static enum ElectricityNetworkMemberType {
+	public static enum EnergyNetworkMemberType {
 		/**
-		 * A producer of electricity
+		 * A producer of energy
 		 */
 		PRODUCER(0, "Producer"),
 		/**
-		 * A consumer of electricity
+		 * A consumer of energy
 		 */
 		CONSUMER(1, "Consumer"),
 		/**
-		 * A producer and consumer of electricity
+		 * A producer and consumer of energy
 		 */
 		PRODUCER_AND_CONSUMER(2, "Producer & Consumer"),
 		/**
-		 * A conductor of electricity
+		 * A conductor of energy
 		 */
 		CONDUCTOR(3, "Conductor");
 
@@ -76,12 +77,12 @@ public interface IElectricityNetworkMember {
 		private final String name;
 
 		/**
-		 * Constructs a new electricity network member type
+		 * Constructs a new energy network member type
 		 * 
 		 * @param id The ID of the member type
 		 * @param name The name of the member type
 		 */
-		private ElectricityNetworkMemberType(int id, String name) {
+		private EnergyNetworkMemberType(int id, String name) {
 			this.id = id;
 			this.name = name;
 		}
