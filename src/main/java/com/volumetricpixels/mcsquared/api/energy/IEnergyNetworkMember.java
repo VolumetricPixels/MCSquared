@@ -3,6 +3,8 @@ package com.volumetricpixels.mcsquared.api.energy;
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.material.block.BlockFace;
 
+import com.volumetricpixels.mcsquared.api.electricity.IElectricityNetwork;
+
 
 /**
  * Represents a member of an energy network
@@ -27,7 +29,7 @@ public interface IEnergyNetworkMember {
 	 * 
 	 * @return The energy network this member is a part of
 	 */
-	IEnergyNetwork getNetwork();
+	IElectricityNetwork getNetwork();
 
 	/**
 	 * Gets an array of adjacent network members to this one

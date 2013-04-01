@@ -1,13 +1,16 @@
-package com.volumetricpixels.mcsquared.api.energy;
+package com.volumetricpixels.mcsquared.api.electricity;
 
-import com.volumetricpixels.mcsquared.api.electricity.IElectricityPacket;
+import java.util.Map;
+import java.util.Set;
+
+import com.volumetricpixels.mcsquared.api.energy.IEnergyNetworkMember;
 
 
 /**
  * Represents an network of consumers, producers, transmitters, receivers and
  * conductors of electricity, or an 'electricity network'
  */
-public interface IEnergyNetwork {
+public interface IElectricityNetwork {
 	/**
 	 * Causes the given electricity network member to start producing
 	 * electricity for this electricity network. If member is null, or
@@ -15,6 +18,7 @@ public interface IEnergyNetwork {
 	 * 
 	 * @param member The member to start producing electricity
 	 * @param packet The amount of electricity to start producing
+	 * @throws IllegalArgumentException If member or packet is null
 	 */
 	void startProduction(IEnergyNetworkMember member, IElectricityPacket packet);
 
@@ -26,6 +30,7 @@ public interface IEnergyNetwork {
 	 * @param member The member to start producing electricity
 	 * @param amps The amount of amps to start producing
 	 * @param volts The amount of volts to start producing
+	 * @throws IllegalArgumentException If member is null
 	 */
 	void startProduction(IEnergyNetworkMember member, double amps, double volts);
 
@@ -52,50 +57,50 @@ public interface IEnergyNetwork {
 	boolean isProducing(IEnergyNetworkMember member);
 
 	/**
-	 * Causes the given electricity network manager to start to request the
+	 * Causes the given electricity network manager to start to consume the
 	 * given amount of electricity in the form of an electricity packet from the
 	 * electricity network. If packet is null or member is null, an
 	 * IllegalArgumentException is thrown
 	 * 
-	 * @param member The member to start requesting the network
-	 * @param packet The amount of electricity to start requesting
+	 * @param member The member to start consumeing the network
+	 * @param packet The amount of electricity to start consumeing
 	 * @throws IllegalArgumentException If an argument is null
 	 */
-	void startRequesting(IEnergyNetworkMember member, IElectricityPacket packet);
+	void startConsumption(IEnergyNetworkMember member, IElectricityPacket packet);
 
 	/**
-	 * Causes the given electricity network manager to start to request the
+	 * Causes the given electricity network manager to start to consume the
 	 * given amount of electricity in the form of amps and volts from the
 	 * electricity network. If member is null, an IllegalArgumentException
 	 * is thrown
 	 * 
-	 * @param member The member to start requesting the network
-	 * @param amps The amount of amps to request from the network
-	 * @param volts The amount of volts to request from the network
+	 * @param member The member to start consumeing the network
+	 * @param amps The amount of amps to consume from the network
+	 * @param volts The amount of volts to consume from the network
 	 * @throws IllegalArgumentException If member is null
 	 */
-	void startRequesting(IEnergyNetworkMember member, double amps, double volts);
+	void startConsumption(IEnergyNetworkMember member, double amps, double volts);
 
 	/**
-	 * Stops the given electricity network member from requesting any more
+	 * Stops the given electricity network member from consumeing any more
 	 * electricity from this particular electricity network only. If member is
 	 * null, an IllegalArgumentException is thrown.
 	 * 
-	 * @param member The member to stop incoming requests from
+	 * @param member The member to stop incoming consumes from
 	 * @throws IllegalArgumentException If member is null
 	 */
-	void stopRequesting(IEnergyNetworkMember member);
+	void stopConsumption(IEnergyNetworkMember member);
 
 	/**
-	 * Checks if the given electricity network member is requesting to received
+	 * Checks if the given electricity network member is consumeing to received
 	 * electricity from this electricity network. If member is null, a
 	 * IllegalArgumentException is thrown
 	 * 
-	 * @param member The member to check for incoming requests from
-	 * @return Whether the given member is requesting from this network
+	 * @param member The member to check for incoming consumes from
+	 * @return Whether the given member is consumeing from this network
 	 * @throws IllegalArgumentException If member is null
 	 */
-	boolean isRequesting(IEnergyNetworkMember member);
+	boolean isConsuming(IEnergyNetworkMember member);
 
 	/**
 	 * Gets the amount of electricity produced by this electricity network,
@@ -121,4 +126,37 @@ public interface IEnergyNetwork {
 	 * @throws IllegalArgumentException If members is null or invalid
 	 */
 	IElectricityPacket getProducedBy(IEnergyNetworkMember... members);
+
+	/**
+	 * Gets the amount of electricity demanded by this electricity network,
+	 * ignoring any electricity network members given in the ignored
+	 * argument. If the argument is null, this will function as normal and
+	 * return the amount of electricity demanded by the entire network, with no
+	 * exclusions
+	 * 
+	 * @param excluded Electricity network members to exclude
+	 * @return The amount of electricity this network demands minus that
+	 *         demanded by members contained in excluded
+	 */
+	IElectricityPacket getDemand(IEnergyNetworkMember... ignored);
+
+	IElectricityPacket onConsumption(IEnergyNetworkMember member);
+
+	Map<IEnergyNetworkMember, IElectricityPacket> getProducers();
+
+	Map<IEnergyNetworkMember, IElectricityPacket> getConsumers();
+
+	Set<IElectricityConductor> getConductors();
+
+	double getTotalResistance();
+
+	double getMinimumContainedEnergy();
+
+	void cleanup();
+
+	void refresh();
+
+	void merge(IElectricityNetwork other);
+
+	void split(IEnergyNetworkMember point);
 }

@@ -1,6 +1,5 @@
 package com.volumetricpixels.mcsquared.api.format.electricity;
 
-
 /**
  * Used for formatting values into easily human understandable strings based on
  * the electricity units and measurement types. These methods are mostly used

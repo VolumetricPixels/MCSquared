@@ -19,6 +19,10 @@ public interface IElectricityPacket extends Cloneable {
 	 */
 	double getVolts();
 
+	void setAmps(double amps);
+
+	void setVolts(double volts);
+
 	/**
 	 * Gets the amount of watts in this packet
 	 * 

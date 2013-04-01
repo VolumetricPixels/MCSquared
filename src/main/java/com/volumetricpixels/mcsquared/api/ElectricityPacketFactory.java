@@ -30,6 +30,10 @@ public abstract class ElectricityPacketFactory {
 		return factory.newElectricityPacket(amps, volts);
 	}
 
+	public static final IElectricityPacket fromWatts(double watts, double volts) {
+		return newPacket(watts / volts, volts);
+	}
+
 	private static ElectricityPacketFactory factory;
 
 	public static void setFactory(ElectricityPacketFactory newFactory) {

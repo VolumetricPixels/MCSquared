@@ -22,6 +22,16 @@ public class ElectricityPacket implements IElectricityPacket {
 	}
 
 	@Override
+	public void setAmps(double amps) {
+		this.amps = amps;
+	}
+
+	@Override
+	public void setVolts(double volts) {
+		this.volts = volts;
+	}
+
+	@Override
 	public double getWatts() {
 		return ElectricityPacketHelper.getWattsFromAV(amps, volts);
 	}
