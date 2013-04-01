@@ -5,12 +5,20 @@ import com.volumetricpixels.mcsquared.api.energy.Energy;
 public class Electricity extends Energy<Electricity> {
 
     public static final Electricity EMPTY = new Electricity(0);
+    private final float energy;
     private final float amps, volts;
 
     public Electricity(float energy) {
-        super(energy);
+        if (energy < 0) {
+            throw new IllegalArgumentException("Energy cannot be negative!");
+        }
+        this.energy = energy;
         amps = energy / 0.05f; // Energy / Time (1 tick)
         volts = 0; // TODO configure
+    }
+    
+    public float getValue() {
+        return energy;
     }
 
     public float getAmperes() {
@@ -49,5 +57,15 @@ public class Electricity extends Energy<Electricity> {
     @Override
     public Electricity newEmpty() {
         return Electricity.EMPTY;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return energy == 0;
+    }
+
+    @Override
+    public int compareTo(Electricity other) {
+        return energy == other.energy ? 0 : (energy - other.energy > 0 ? 1 : -1);
     }
 }
