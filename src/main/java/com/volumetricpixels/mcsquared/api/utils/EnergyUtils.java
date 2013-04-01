@@ -24,7 +24,6 @@ public class EnergyUtils {
         if (receivers.isEmpty()) {
             return toGive;
         }
-        T excess = toGive.newEmpty();
         Set<EnergyReceiver<T>> left = new HashSet<EnergyReceiver<T>>(receivers);//If it's here it either hasn't been visited or it's full
         T returned = toGive.newEmpty();
         T give = toGive.split(receivers.size());
@@ -39,6 +38,6 @@ public class EnergyUtils {
             }
             give = returned.split(left.size());
         }
-        return excess;
+        return null;//Excess wasn't being calculated
     }
 }

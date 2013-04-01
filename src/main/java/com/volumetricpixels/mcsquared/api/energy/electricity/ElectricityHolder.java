@@ -2,7 +2,7 @@ package com.volumetricpixels.mcsquared.api.energy.electricity;
 
 import com.volumetricpixels.mcsquared.api.energy.EnergyHolder;
 
-public abstract class ElectricityHolderImpl extends EnergyNodeImpl<Electricity> implements EnergyHolder<Electricity> {
+public abstract class ElectricityHolder extends ElectricityNode<Electricity> implements EnergyHolder<Electricity> {
 
     protected Electricity maxEnergy = new Electricity(Float.MAX_VALUE);
     protected Electricity energyHeld = Electricity.EMPTY;
@@ -18,13 +18,11 @@ public abstract class ElectricityHolderImpl extends EnergyNodeImpl<Electricity> 
      */
     @Override
     public Electricity addEnergy(Electricity energy) {
-        Electricity excess = energy.newEmpty();
-        if (energy.getValue() < 0) {
-            throw new IllegalArgumentException("Cannot add negative energy!");
-        } else if (energyHeld.add(energy).compareTo(maxEnergy) > 0) {
-            excess = energyHeld.add(energy).subtract(maxEnergy);
+        Electricity excess = energyHeld.add(energy).substract(maxEnergy);
+        if (excess.getValue() > 0) {
             energyHeld = maxEnergy;
         } else {
+            excess = Electricity.EMPTY;
             energyHeld = energyHeld.add(energy);
         }
         return excess;
@@ -37,14 +35,12 @@ public abstract class ElectricityHolderImpl extends EnergyNodeImpl<Electricity> 
      */
     @Override
     public Electricity removeEnergy(Electricity energy) {
-        Electricity excess = energy.newEmpty();
-        if (energy.getValue() < 0) {
-            throw new IllegalArgumentException("Cannot remove negative energy!");
-        } else if (energyHeld.subtract(energy).getValue() < 0) {
-            excess = new Electricity(Math.abs(energyHeld.getValue() - energy.getValue()));
-            energyHeld = energy.newEmpty();
+        Electricity excess = Electricity.EMPTY;
+        if (energyHeld.getValue() - energy.getValue() < 0) {
+            excess = energy.substract(energyHeld);
+            energyHeld = Electricity.EMPTY;
         } else {
-            energyHeld = energyHeld.subtract(energy);
+            energyHeld = energyHeld.substract(energy);
         }
         return excess;
     }

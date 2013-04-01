@@ -14,7 +14,7 @@ import org.spout.api.geo.cuboid.Block;
 import org.spout.api.material.block.BlockFace;
 import org.spout.api.material.block.BlockFaces;
 
-public abstract class EnergyNodeImpl<T extends Energy<T>> extends BlockComponent implements EnergyNode<T> {
+public abstract class ElectricityNode<T extends Energy<T>> extends BlockComponent implements EnergyNode<T> {
 
     private final Set<Node<T>> neighbours = new HashSet<Node<T>>();
 

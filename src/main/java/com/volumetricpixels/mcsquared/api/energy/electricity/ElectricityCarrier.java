@@ -10,7 +10,7 @@ import java.util.Set;
 import org.spout.api.Spout;
 import org.spout.api.material.BlockMaterial;
 
-public class ElectricityCarrier extends EnergyNodeImpl<Electricity> implements EnergyReceiver<Electricity>, EnergySource<Electricity> {
+public class ElectricityCarrier extends ElectricityNode<Electricity> implements EnergyReceiver<Electricity>, EnergySource<Electricity> {
 
     protected final Set<EnergyReceiver<Electricity>> receivers = new HashSet<EnergyReceiver<Electricity>>();
     protected Electricity maxEnergyTransfer = new Electricity(Float.MAX_VALUE);

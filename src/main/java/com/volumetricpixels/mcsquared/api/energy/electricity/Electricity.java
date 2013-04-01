@@ -4,60 +4,50 @@ import com.volumetricpixels.mcsquared.api.energy.Energy;
 
 public class Electricity extends Energy<Electricity> {
 
-    public static final Electricity EMPTY = new Electricity(0f);
-    private final float value;
+    public static final Electricity EMPTY = new Electricity(0);
+    private final float amps, volts;
 
-    public Electricity(float value) {
-        this.value = value;
+    public Electricity(float energy) {
+        super(energy);
+        amps = energy / 0.05f; // Energy / Time (1 tick)
+        volts = 0; // TODO configure
     }
 
-    public float getValue() {
-        return value;
+    public float getAmperes() {
+        return amps;
+    }
+
+    public float getVoltage() {
+        return volts;
     }
 
     @Override
     public Electricity add(Electricity other) {
-        return new Electricity(value + other.value);
+        return new Electricity(energy + other.energy);
     }
 
     @Override
-    public Electricity subtract(Electricity other) {
-        return new Electricity(value - other.value);
+    public Electricity substract(Electricity other) {
+        return new Electricity(energy - other.energy);
     }
 
     @Override
     public Electricity multiply(Electricity other) {
-        return new Electricity(value * other.value);
+        return new Electricity(energy * other.energy);
     }
 
     @Override
     public Electricity divide(Electricity other) {
-        return new Electricity(value / other.value);
+        return new Electricity(energy / other.energy);
     }
-
+    
     @Override
     public Electricity split(int size) {
-        return new Electricity(value / size);
+        return new Electricity(energy / size);
     }
-
-    @Override
-    public boolean isEmpty() {
-        return value <= 0;
-    }
-
+    
     @Override
     public Electricity newEmpty() {
-        return new Electricity(0);
-    }
-
-    @Override
-    public int compareTo(Electricity other) {
-        if (value > other.value) {
-            return 1;
-        }
-        if (value < other.value) {
-            return -1;
-        }
-        return 0;
+        return Electricity.EMPTY;
     }
 }
