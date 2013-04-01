@@ -17,7 +17,7 @@ public abstract class Energy<T extends Energy<?>> implements Comparable<T> {
     
     public abstract T add(T other);
     
-    public abstract T substract(T other);
+    public abstract T subtract(T other);
     
     public abstract T multiply(T other);
     

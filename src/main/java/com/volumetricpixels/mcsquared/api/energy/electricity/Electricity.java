@@ -27,7 +27,7 @@ public class Electricity extends Energy<Electricity> {
     }
 
     @Override
-    public Electricity substract(Electricity other) {
+    public Electricity subtract(Electricity other) {
         return new Electricity(energy - other.energy);
     }
 

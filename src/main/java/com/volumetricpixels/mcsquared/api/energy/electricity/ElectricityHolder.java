@@ -18,7 +18,7 @@ public abstract class ElectricityHolder extends ElectricityNode<Electricity> imp
      */
     @Override
     public Electricity addEnergy(Electricity energy) {
-        Electricity excess = energyHeld.add(energy).substract(maxEnergy);
+        Electricity excess = energyHeld.add(energy).subtract(maxEnergy);
         if (excess.getValue() > 0) {
             energyHeld = maxEnergy;
         } else {
@@ -37,10 +37,10 @@ public abstract class ElectricityHolder extends ElectricityNode<Electricity> imp
     public Electricity removeEnergy(Electricity energy) {
         Electricity excess = Electricity.EMPTY;
         if (energyHeld.getValue() - energy.getValue() < 0) {
-            excess = energy.substract(energyHeld);
+            excess = energy.subtract(energyHeld);
             energyHeld = Electricity.EMPTY;
         } else {
-            energyHeld = energyHeld.substract(energy);
+            energyHeld = energyHeld.subtract(energy);
         }
         return excess;
     }
