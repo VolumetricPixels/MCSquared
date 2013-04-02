@@ -210,10 +210,8 @@ public class ElectricityNetwork implements IElectricityNetwork {
 			throw new IllegalArgumentException("Cannot merge a network with itself!");
 		}
 
-		ElectricityNetwork merged = new ElectricityNetwork();
-		merged.getConductors().addAll(getConductors());
-		merged.getConductors().addAll(other.getConductors());
-		merged.refresh();
+		getConductors().addAll(other.getConductors());
+		refresh();
 	}
 
 	@Override
