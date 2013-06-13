@@ -13,5 +13,5 @@ public interface EnergyReceiver<T extends Energy<T>> extends Node<T> {
      * @param energy Amount of energy received
      * @return Energy that couldn't be received
      */
-    public T onReceive(EnergySource<T> source, Set<EnergyNodeComponent<T>> visited, T energy);
+    public T onReceive(EnergySource<T> source, Set<Node<? extends T>> visited, T energy);
 }

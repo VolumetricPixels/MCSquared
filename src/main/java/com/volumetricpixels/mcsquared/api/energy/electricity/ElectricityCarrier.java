@@ -1,6 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy.electricity;
 
-import com.volumetricpixels.mcsquared.api.energy.EnergyNodeComponent;
+import com.volumetricpixels.mcsquared.api.Node;
 import com.volumetricpixels.mcsquared.api.energy.EnergyReceiver;
 import com.volumetricpixels.mcsquared.api.energy.EnergySource;
 import com.volumetricpixels.mcsquared.api.energy.event.ElectricityCarrierOverloadEvent;
@@ -18,7 +18,7 @@ public class ElectricityCarrier extends ElectricityNode implements EnergyReceive
     protected Electricity maxEnergyTransfer = new Electricity(Float.MAX_VALUE);
 
     @Override
-    public Electricity onReceive(EnergySource<Electricity> source, Set<EnergyNodeComponent<Electricity>> visited, Electricity energy) {
+    public Electricity onReceive(EnergySource<Electricity> source, Set<Node<? extends Electricity>> visited, Electricity energy) {
         if (maxEnergyTransfer.compareTo(energy) > 0) {
             ElectricityCarrierOverloadEvent event = new ElectricityCarrierOverloadEvent(energy, this);
             Spout.getEventManager().callEvent(event);
