@@ -9,7 +9,7 @@ public interface Node<T> {
      *
      * @return All neighbours connected to this block
      */
-    public Set<? extends Node<T>> getNeighbors();
+    public Set<? extends Node<? extends T>> getNeighbors();
 
     /**
      * Add a neighbour node to this node
@@ -18,7 +18,7 @@ public interface Node<T> {
      *
      * @return If addition of neighbour was successful
      */
-    public boolean addNeighbor(Node<T> node);
+    public boolean addNeighbor(Node<? extends T> node);
 
     /**
      * Remove a neighbour from this node
@@ -27,5 +27,7 @@ public interface Node<T> {
      *
      * @return If removal if neighbour was successful
      */
-    public boolean removeNeighbor(Node<T> node);
+    public boolean removeNeighbor(Node<? extends T> node);
+    
+    public Class<T> getTClass();
 }

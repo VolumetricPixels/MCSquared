@@ -1,7 +1,7 @@
 package com.volumetricpixels.mcsquared.api.utils;
 
 import com.volumetricpixels.mcsquared.api.energy.Energy;
-import com.volumetricpixels.mcsquared.api.energy.EnergyNode;
+import com.volumetricpixels.mcsquared.api.energy.EnergyNodeComponent;
 import com.volumetricpixels.mcsquared.api.energy.EnergyReceiver;
 import com.volumetricpixels.mcsquared.api.energy.EnergySource;
 import java.util.HashSet;
@@ -20,7 +20,7 @@ public class EnergyUtils {
      * @param receivers
      * @return leftover energy that none of the receivers wanted
      */
-    public static <T extends Energy<T>> T safeSplit(EnergySource<T> from, T toGive, Set<EnergyNode<T>> visited, Set<EnergyReceiver<T>> receivers) {
+    public static <T extends Energy<T>> T safeSplit(EnergySource<T> from, T toGive, Set<EnergyNodeComponent<T>> visited, Set<EnergyReceiver<T>> receivers) {
         if (receivers.isEmpty()) {
             return toGive;
         }

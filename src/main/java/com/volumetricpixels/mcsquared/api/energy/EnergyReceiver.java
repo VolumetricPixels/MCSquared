@@ -1,8 +1,9 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
+import com.volumetricpixels.mcsquared.api.Node;
 import java.util.Set;
 
-public interface EnergyReceiver<T extends Energy<T>> extends EnergyNode<T> {
+public interface EnergyReceiver<T extends Energy<T>> extends Node<T> {
 
     /**
      * Called when energy is received from a source
@@ -12,5 +13,5 @@ public interface EnergyReceiver<T extends Energy<T>> extends EnergyNode<T> {
      * @param energy Amount of energy received
      * @return Energy that couldn't be received
      */
-    public T onReceive(EnergySource<T> source, Set<EnergyNode<T>> visited, T energy);
+    public T onReceive(EnergySource<T> source, Set<EnergyNodeComponent<T>> visited, T energy);
 }

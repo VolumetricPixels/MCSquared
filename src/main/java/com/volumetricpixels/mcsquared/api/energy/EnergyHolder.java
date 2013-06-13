@@ -1,6 +1,8 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-public interface EnergyHolder<T extends Energy<T>> extends EnergyNode<T> {
+import com.volumetricpixels.mcsquared.api.Node;
+
+public interface EnergyHolder<T extends Energy<T>> extends Node<T> {
 
     /**
      * Gets the energy held inside on this node

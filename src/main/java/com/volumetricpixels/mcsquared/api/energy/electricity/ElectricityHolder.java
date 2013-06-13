@@ -2,7 +2,7 @@ package com.volumetricpixels.mcsquared.api.energy.electricity;
 
 import com.volumetricpixels.mcsquared.api.energy.EnergyHolder;
 
-public abstract class ElectricityHolder extends ElectricityNode<Electricity> implements EnergyHolder<Electricity> {
+public abstract class ElectricityHolder extends ElectricityNode implements EnergyHolder<Electricity> {
 
     protected Electricity maxEnergy = new Electricity(Float.MAX_VALUE);
     protected Electricity energyHeld = Electricity.EMPTY;

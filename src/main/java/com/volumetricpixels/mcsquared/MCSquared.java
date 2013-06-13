@@ -1,9 +1,9 @@
 package com.volumetricpixels.mcsquared;
 
 import java.util.logging.Level;
-import org.spout.api.plugin.CommonPlugin;
+import org.spout.api.plugin.Plugin;
 
-public class MCSquared extends CommonPlugin {
+public class MCSquared extends Plugin {
 
     @Override
     public void onEnable() {
