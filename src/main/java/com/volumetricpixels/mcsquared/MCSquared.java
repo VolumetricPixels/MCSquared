@@ -7,11 +7,11 @@ public class MCSquared extends Plugin {
 
     @Override
     public void onEnable() {
-        getLogger().log(Level.INFO, "MCSquared version: {0} has been Enabled.", getDescription().getVersion());
+        getLogger().log(Level.INFO, "MCSquared version: {0} has been enabled.", getDescription().getVersion());
     }
 
     @Override
     public void onDisable() {
-        getLogger().log(Level.INFO, "MCSquared version: {0} has been Disabled.", getDescription().getVersion());
+        getLogger().log(Level.INFO, "MCSquared version: {0} has been disabled.", getDescription().getVersion());
     }
 }
