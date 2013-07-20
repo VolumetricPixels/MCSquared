@@ -7,5 +7,5 @@ import java.util.Set;
 
 public interface LiquidReceiver<T extends Liquid> extends Node<Pipeable> {
 
-    public LiquidPacket<T> onReceive(EnergySource source, Set<Node<Pipeable>> visited, LiquidPacket<T> liquid);
+	public LiquidPacket<T> onReceive(EnergySource source, Set<Node<Pipeable>> visited, LiquidPacket<T> liquid);
 }

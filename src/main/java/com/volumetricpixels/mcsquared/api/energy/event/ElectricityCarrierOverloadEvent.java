@@ -6,20 +6,20 @@ import org.spout.api.event.HandlerList;
 
 public class ElectricityCarrierOverloadEvent extends EnergyEvent {
 
-    private static HandlerList handlerList = new HandlerList();
-    private final ElectricityCarrier carrier;
+	private static HandlerList handlerList = new HandlerList();
+	private final ElectricityCarrier carrier;
 
-    public ElectricityCarrierOverloadEvent(Energy energy, ElectricityCarrier wire) {
-        super(energy);
-        this.carrier = wire;
-    }
+	public ElectricityCarrierOverloadEvent(Energy energy, ElectricityCarrier wire) {
+		super(energy);
+		this.carrier = wire;
+	}
 
-    public ElectricityCarrier getCarrier() {
-        return carrier;
-    }
+	public ElectricityCarrier getCarrier() {
+		return carrier;
+	}
 
-    @Override
-    public HandlerList getHandlers() {
-        return handlerList;
-    }
+	@Override
+	public HandlerList getHandlers() {
+		return handlerList;
+	}
 }

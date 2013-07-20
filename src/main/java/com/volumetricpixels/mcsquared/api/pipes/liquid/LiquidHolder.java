@@ -5,9 +5,9 @@ import com.volumetricpixels.mcsquared.api.pipes.Pipeable;
 
 public interface LiquidHolder<T extends Liquid> extends Node<Pipeable> {
 
-    public LiquidPacket<? extends T> getLiquidHeld();
+	public LiquidPacket<? extends T> getLiquidHeld();
 
-    public LiquidPacket<T> addLiquid(LiquidPacket<T> amount);
+	public LiquidPacket<T> addLiquid(LiquidPacket<T> amount);
 
-    public LiquidPacket<T> removeLiquid(LiquidPacket<T> amount);
+	public LiquidPacket<T> removeLiquid(LiquidPacket<T> amount);
 }

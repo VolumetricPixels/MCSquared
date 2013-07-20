@@ -14,30 +14,30 @@ import org.spout.api.material.BlockMaterial;
 
 public class ElectricityCarrier extends ElectricityNode implements EnergyReceiver<Electricity>, EnergySource<Electricity> {
 
-    protected final Set<EnergyReceiver<Electricity>> receivers = new HashSet<EnergyReceiver<Electricity>>();
-    protected Electricity maxEnergyTransfer = new Electricity(Float.MAX_VALUE);
+	protected final Set<EnergyReceiver<Electricity>> receivers = new HashSet<EnergyReceiver<Electricity>>();
+	protected Electricity maxEnergyTransfer = new Electricity(Float.MAX_VALUE);
 
-    @Override
-    public Electricity onReceive(EnergySource<Electricity> source, Set<EnergyNodeComponent<Electricity>> visited, Electricity energy) {
-        if (maxEnergyTransfer.compareTo(energy) > 0) {
-            ElectricityCarrierOverloadEvent event = new ElectricityCarrierOverloadEvent(energy, this);
-            Spout.getEventManager().callEvent(event);
-            if (!event.isCancelled()) {
-                getBlock().getPosition().getBlock().setMaterial(BlockMaterial.AIR);
-            }
-            return energy;
-        }
-        visited.add(this);
-        return EnergyUtils.safeSplit(source, energy, visited, receivers);
-    }
+	@Override
+	public Electricity onReceive(EnergySource<Electricity> source, Set<EnergyNodeComponent<Electricity>> visited, Electricity energy) {
+		if (maxEnergyTransfer.compareTo(energy) > 0) {
+			ElectricityCarrierOverloadEvent event = new ElectricityCarrierOverloadEvent(energy, this);
+			Spout.getEventManager().callEvent(event);
+			if (!event.isCancelled()) {
+				getBlock().getPosition().getBlock().setMaterial(BlockMaterial.AIR);
+			}
+			return energy;
+		}
+		visited.add(this);
+		return EnergyUtils.safeSplit(source, energy, visited, receivers);
+	}
 
-    @Override
-    public void addReceiver(EnergyReceiver<Electricity> receiver) {
-        receivers.add(receiver);
-    }
+	@Override
+	public void addReceiver(EnergyReceiver<Electricity> receiver) {
+		receivers.add(receiver);
+	}
 
-    @Override
-    public void removeReceiver(EnergyReceiver<Electricity> receiver) {
-        receivers.remove(receiver);
-    }
+	@Override
+	public void removeReceiver(EnergyReceiver<Electricity> receiver) {
+		receivers.remove(receiver);
+	}
 }
