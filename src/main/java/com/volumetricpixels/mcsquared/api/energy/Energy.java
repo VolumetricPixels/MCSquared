@@ -1,6 +1,6 @@
 package com.volumetricpixels.mcsquared.api.energy;
 
-public abstract class Energy<T extends Energy<?>> implements Comparable<T> {
+public interface Energy<T extends Energy<?>> extends Comparable<T> {
     
     public abstract T add(T other);
     

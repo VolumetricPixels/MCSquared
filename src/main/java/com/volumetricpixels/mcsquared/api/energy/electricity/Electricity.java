@@ -2,7 +2,7 @@ package com.volumetricpixels.mcsquared.api.energy.electricity;
 
 import com.volumetricpixels.mcsquared.api.energy.Energy;
 
-public class Electricity extends Energy<Electricity> {
+public class Electricity implements Energy<Electricity> {
 
     public static final Electricity EMPTY = new Electricity(0);
     private final float energy;
