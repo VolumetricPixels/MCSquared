@@ -21,23 +21,23 @@ public class LiquidPacket<T extends Liquid> implements Comparable<LiquidPacket<T
 	}
 
 	public LiquidPacket<T> add(LiquidPacket<T> other) {
-		return new LiquidPacket<T>(other.liquid, value + other.getValue());
+		return new LiquidPacket<>(other.liquid, value + other.getValue());
 	}
 
 	public LiquidPacket<T> subtract(LiquidPacket<T> other) {
-		return new LiquidPacket<T>(other.liquid, value - other.getValue());
+		return new LiquidPacket<>(other.liquid, value - other.getValue());
 	}
 
 	public LiquidPacket<T> multiply(LiquidPacket<T> other) {
-		return new LiquidPacket<T>(other.liquid, value * other.getValue());
+		return new LiquidPacket<>(other.liquid, value * other.getValue());
 	}
 
 	public LiquidPacket<T> divide(LiquidPacket<T> other) {
-		return new LiquidPacket<T>(other.liquid, value / other.getValue());
+		return new LiquidPacket<>(other.liquid, value / other.getValue());
 	}
 
 	public LiquidPacket<T> split(int size) {
-		return new LiquidPacket<T>(liquid, value / size);
+		return new LiquidPacket<>(liquid, value / size);
 	}
 
 	@Override
@@ -52,6 +52,6 @@ public class LiquidPacket<T extends Liquid> implements Comparable<LiquidPacket<T
 	}
 
 	public static <U extends Liquid> LiquidPacket<U> getEmpty(Class<U> l) {
-		return new LiquidPacket<U>(l, 0f);
+		return new LiquidPacket<>(l, 0f);
 	}
 }

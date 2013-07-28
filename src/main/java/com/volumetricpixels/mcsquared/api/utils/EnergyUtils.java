@@ -13,11 +13,11 @@ public class EnergyUtils {
 	 * Safely splits the given energy across all the receivers and returns what
 	 * is left. NOTE: The calling node should add itself to the visited list
 	 *
-	 * @param <T>       Type of energy
-	 * @param from
-	 * @param toGive
-	 * @param visited
-	 * @param receivers
+	 * @param <T> Type of energy
+	 * @param from The energy source
+	 * @param toGive The energy to give
+	 * @param visited Previous visited nodes
+	 * @param receivers Set of receivers
 	 *
 	 * @return leftover energy that none of the receivers wanted
 	 */
@@ -25,7 +25,7 @@ public class EnergyUtils {
 		if (receivers.isEmpty()) {
 			return toGive;
 		}
-		Set<EnergyReceiver<T>> left = new HashSet<EnergyReceiver<T>>(receivers);//If it's here it either hasn't been visited or it's full
+		Set<EnergyReceiver<T>> left = new HashSet<>(receivers);//If it's here it either hasn't been visited or it's full
 		T returned = toGive.newEmpty();
 		T give = toGive.split(receivers.size());
 		while (!left.isEmpty() && !give.isEmpty()) {

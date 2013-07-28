@@ -7,6 +7,7 @@ public abstract class ElectricityHolder extends ElectricityNode implements Energ
 	protected Electricity maxEnergy = new Electricity(Float.MAX_VALUE);
 	protected Electricity energyHeld = Electricity.EMPTY;
 
+	@Override
 	public Electricity getEnergyHeld() {
 		return energyHeld;
 	}

@@ -6,20 +6,21 @@ import java.util.HashSet;
 import java.util.Set;
 import org.spout.api.component.block.BlockComponent;
 import org.spout.api.geo.cuboid.Block;
+import org.spout.api.map.DefaultedKey;
+import org.spout.api.map.DefaultedKeyImpl;
 import org.spout.api.material.block.BlockFace;
 import org.spout.api.material.block.BlockFaces;
 
-// TODO this needs work; generics aren't beautiful at all
-public abstract class EnergyNodeComponent<T extends Energy<?>> extends BlockComponent implements Node<T> {//TODO make it an abstract class if Spout ever allows multiple block components
+public abstract class EnergyNodeComponent<T extends Energy<?>> extends BlockComponent implements Node<T> {
 
-	private final Set<Node<? extends T>> neighbours = new HashSet<Node<? extends T>>();
+	private final DefaultedKey<Set<Node<? extends T>>> neighbours =
+			new DefaultedKeyImpl<Set<Node<? extends T>>>("neighbours", new HashSet<Node<? extends T>>());
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onAttached() {
-		Block neighbour;
 		for (BlockFace face : BlockFaces.NESWBT) {
-			neighbour = getBlock().getPosition().getBlock().translate(face);
+			Block neighbour = getBlock().getPosition().getBlock().translate(face);
 			EnergyNodeComponent<?> node = neighbour.get(EnergyNodeComponent.class);
 			if (node != null) {
 				addNeighbor((Node<T>) node);
@@ -30,7 +31,7 @@ public abstract class EnergyNodeComponent<T extends Energy<?>> extends BlockComp
 
 	@Override
 	public Set<Node<? extends T>> getNeighbors() {
-		return Collections.unmodifiableSet(neighbours);
+		return Collections.unmodifiableSet(neighbours.getDefaultValue());
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public abstract class EnergyNodeComponent<T extends Energy<?>> extends BlockComp
 		if (node instanceof EnergyReceiver && this instanceof EnergySource) {
 			((EnergySource) this).addReceiver((EnergyReceiver) node);
 		}
-		return neighbours.add(node);
+		return neighbours.getDefaultValue().add(node);
 	}
 
 	@Override
@@ -54,6 +55,6 @@ public abstract class EnergyNodeComponent<T extends Energy<?>> extends BlockComp
 		if (node instanceof EnergyReceiver && this instanceof EnergySource) {
 			((EnergySource) this).removeReceiver((EnergyReceiver) node);
 		}
-		return neighbours.remove(node);
+		return neighbours.getDefaultValue().remove(node);
 	}
 }

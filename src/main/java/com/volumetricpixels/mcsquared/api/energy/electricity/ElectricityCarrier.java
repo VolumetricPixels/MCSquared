@@ -14,7 +14,7 @@ import org.spout.api.material.BlockMaterial;
 
 public class ElectricityCarrier extends ElectricityNode implements EnergyReceiver<Electricity>, EnergySource<Electricity> {
 
-	protected final Set<EnergyReceiver<Electricity>> receivers = new HashSet<EnergyReceiver<Electricity>>();
+	protected final Set<EnergyReceiver<Electricity>> receivers = new HashSet<>();
 	protected Electricity maxEnergyTransfer = new Electricity(Float.MAX_VALUE);
 
 	@Override
